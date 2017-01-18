@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "target": "es6",
+    "jsx": "preserve",
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "skipDefaultLibCheck": true,
+    "lib": ["es6", "dom"]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
