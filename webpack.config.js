@@ -49,6 +49,14 @@ module.exports = {
       {
         test: /\.yml|\.yaml/,
         loader: 'json-loader!yaml-loader'
+      },
+      {
+        test: /\.svg$/,
+        loader: 'babel-loader?presets[]=es2015,presets[]=react!svg-react-loader'
+      },
+      {
+        test: /\.(gif|png|jpg)$/,
+        loader: 'url-loader?limit=8192'
       }
     ]
   },

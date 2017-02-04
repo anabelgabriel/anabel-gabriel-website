@@ -1,0 +1,31 @@
+@import "~normalize.scss/normalize.scss";
+@import "../../styles/media";
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  height: 100%;
+  background: linear-gradient(135deg, #112034, #282249) no-repeat fixed;
+  &>div {
+    flex: 1;
+    background: url("./background.png") center 120% repeat-x;
+    background-size: 760px;
+  }
+}
+
+.app {
+  &__logo {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    &__icon {
+      @include mobile {
+        width: 84px;
+        height: 58px;
+      }
+    }
+  }
+}
