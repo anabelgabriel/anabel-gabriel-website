@@ -3,6 +3,7 @@
 
 html {
   height: 100%;
+  background: #112034;
 }
 
 body {
@@ -11,8 +12,27 @@ body {
   background: linear-gradient(135deg, #112034, #282249) no-repeat fixed;
   &>div {
     flex: 1;
-    background: url("./background.png") center 120% repeat-x;
-    background-size: 760px;
+    background-image: url("./background-desktop.png"), url("./stars-desktop.png");
+    background-repeat: repeat-x, repeat-x;
+    background-size: (1318px / 2) (492px / 2), (990px / 2) (850px / 2);
+    animation: stars 40s linear infinite;
+
+    @keyframes stars {
+      from { background-position: center bottom, (990px / 2) bottom; }
+      to { background-position: center bottom, 0px bottom; }
+    }
+
+    @include mobile {
+      background-image: url("./background-mobile.png"), url("./stars-desktop.png");
+      background-repeat: repeat-x, repeat-x;
+      background-size: (1318px / 2) (307px / 2), (990px / 2.5) (850px / 2.5);
+      animation: stars-mobile 27s linear infinite;
+
+      @keyframes stars-mobile {
+        from { background-position: center bottom, (990px / 2.5) bottom; }
+        to { background-position: center bottom, 0px bottom; }
+      }
+    }
   }
 }
 

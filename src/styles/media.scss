@@ -1,14 +1,14 @@
-@mixin screen-and-smaller() {
+@mixin desktop-and-smaller() {
   @content;
 }
 
-@mixin screen() {
+@mixin desktop() {
   @media screen and (min-width: 960px) {
     @content;
   }
 }
 
-@mixin screen-and-greater() {
+@mixin desktop-and-greater() {
   @media screen and (min-width: 960px) {
     @content;
   }
