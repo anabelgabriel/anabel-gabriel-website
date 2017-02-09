@@ -1,0 +1,8 @@
+@import "settings";
+
+$class: "#{$layout-namespace}--content";
+
+.#{$class} {
+  width: 568px;
+  margin: 0 auto;
+}

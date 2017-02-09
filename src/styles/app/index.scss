@@ -1,5 +1,5 @@
 @import "~normalize.scss/normalize.scss";
-@import "../../styles/media";
+@import "../media";
 
 html {
   height: 100%;
@@ -12,7 +12,7 @@ body {
   background: linear-gradient(135deg, #112034, #282249) no-repeat fixed;
   &>div {
     flex: 1;
-    background-image: url("./background-desktop.png"), url("./stars-desktop.png");
+    background-image: url("../../images/app/background-desktop.png"), url("../../images/app/stars-desktop.png");
     background-repeat: repeat-x, repeat-x;
     background-size: (1318px / 2) (492px / 2), (990px / 2) (850px / 2);
     animation: stars 40s linear infinite;
@@ -23,7 +23,7 @@ body {
     }
 
     @include mobile {
-      background-image: url("./background-mobile.png"), url("./stars-desktop.png");
+      background-image: url("../../images/app/background-mobile.png"), url("../../images/app/stars-desktop.png");
       background-repeat: repeat-x, repeat-x;
       background-size: (1318px / 2) (307px / 2), (990px / 2.5) (850px / 2.5);
       animation: stars-mobile 27s linear infinite;

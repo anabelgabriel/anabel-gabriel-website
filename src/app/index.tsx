@@ -1,6 +1,6 @@
 import React from 'react';
-import './app.scss';
-import Logo from './logo.svg';
+import '../styles/app/index.scss';
+import Logo from '../images/app/logo.svg';
 import { Provider } from 'mobx-react';
 
 type AppProps = {
