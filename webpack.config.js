@@ -19,7 +19,7 @@ module.exports = {
 
   context: path.resolve(__dirname, 'src'),
 
-  devtool: (!PROD ? 'inline-source-map' : null),
+  devtool: (!PROD ? 'inline-eval-cheap-source-map' : null),
 
   devServer: {
     hot: true,
