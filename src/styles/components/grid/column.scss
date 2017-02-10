@@ -1,0 +1,30 @@
+$class: "column";
+
+$column: 2.2em;
+$gutter: 2.6em;
+$grid-columns: 12;
+
+@function column-width($columns) {
+  $width: $columns * $column + ($columns - 1) * $gutter;
+  $container-width: $grid-columns * $column + ($grid-columns - 1) * $gutter;
+  @return percentage($width / $container-width);
+}
+
+@function gutter-width() {
+  $container-width: $grid-columns * $column + ($grid-columns - 1) * $gutter;
+  @return percentage($gutter / $container-width);
+}
+
+.#{$class} {
+  @for $i from 1 through 12 {
+    &--span-#{$i} {
+      width: column-width($i);
+      margin-right: gutter-width();
+      flex: 0 1 column-width($i);
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
