@@ -9,5 +9,7 @@ $class: "#{$layout-namespace}--content";
 
   @include mobile {
     width: 100vw;
+    box-sizing: border-box;
+    padding: 0 10px;
   }
 }

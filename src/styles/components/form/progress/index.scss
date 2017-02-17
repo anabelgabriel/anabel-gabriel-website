@@ -1,0 +1,8 @@
+@import "settings";
+
+$class: "#{$form-progress-namespace}";
+
+.#{$class} {
+  background: red;
+  display: none;
+}

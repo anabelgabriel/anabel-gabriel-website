@@ -1,0 +1,21 @@
+@import "../../../media";
+@import "../../../colors";
+
+$class: "form--actions";
+
+.#{$class} {
+  height: 64px;
+  @include mobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba($navy-blue, .8);
+    box-shadow: 0 -5px 10px rgba(black, .5);
+
+    &--backdrop {
+      background: transparent;
+      backdrop-filter: blur(10px);
+    }
+  }
+}

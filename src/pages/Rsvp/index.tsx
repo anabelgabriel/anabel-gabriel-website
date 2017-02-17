@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Layout, LayoutContent, TextField, Column, Row } from '../../components';
+import { Layout, LayoutContent, TextField, Column, Row, Radio, RadioGroup, FormActions, FormProgress, FormProgressStep } from '../../components';
 import { i18n } from '../../utils';
 
 type RsvpProps = {
@@ -23,6 +23,18 @@ const Rsvp: React.SFC<RsvpProps> = ({ lang }: RsvpProps): React.ReactElement<Rsv
             <TextField type="name" label={lang.last_name} autoFill="last_name"/>
           </Column>
         </Row>
+        <Row>
+          <RadioGroup>
+            <Radio label={lang.accept}/>
+            <Radio label={lang.decline}/>
+          </RadioGroup>
+        </Row>
+
+        <FormActions>
+          <FormProgress>
+            <FormProgressStep/>
+          </FormProgress>
+        </FormActions>
       </LayoutContent>
     </Layout>
   );
