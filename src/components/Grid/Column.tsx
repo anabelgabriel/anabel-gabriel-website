@@ -12,7 +12,7 @@ export interface ColumnProps {
 const Column: React.SFC<ColumnProps> = ({ children, span, mobileSpan }: ColumnProps): React.ReactElement<ColumnProps> => {
   let className: string = namespace();
   className += ` ${namespace()}--span-${span}`;
-  if (mobileSpan) className += ` ${namespace()}--mobile-span-${span}`;
+  if (mobileSpan) className += ` ${namespace()}--mobile-span-${mobileSpan}`;
 
   return (
     <div className={className}>

@@ -2,4 +2,5 @@ $class: "row";
 
 .#{$class} {
   display: flex;
+  flex-wrap: wrap;
 }

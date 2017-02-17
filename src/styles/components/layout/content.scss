@@ -1,3 +1,4 @@
+@import "../../media";
 @import "settings";
 
 $class: "#{$layout-namespace}--content";
@@ -5,4 +6,8 @@ $class: "#{$layout-namespace}--content";
 .#{$class} {
   width: 568px;
   margin: 0 auto;
+
+  @include mobile {
+    width: 100vw;
+  }
 }

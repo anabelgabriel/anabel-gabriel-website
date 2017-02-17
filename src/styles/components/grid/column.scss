@@ -1,3 +1,5 @@
+@import "../../media";
+
 $class: "column";
 
 $column: 2.2em;
@@ -22,8 +24,28 @@ $grid-columns: 12;
       margin-right: gutter-width();
       flex: 0 1 column-width($i);
 
+      &.#{$class}--span-12 {
+        margin-right: 0;
+      }
+
       &:last-child {
         margin-right: 0;
+      }
+    }
+
+    &--mobile-span-#{$i} {
+      @include mobile {
+        width: column-width($i);
+        margin-right: gutter-width();
+        flex: 0 1 column-width($i);
+
+        &.#{$class}--mobile-span-12 {
+          margin-right: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
       }
     }
   }

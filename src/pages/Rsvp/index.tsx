@@ -11,11 +11,16 @@ const Rsvp: React.SFC<RsvpProps> = ({ lang }: RsvpProps): React.ReactElement<Rsv
     <Layout>
       <LayoutContent>
         <Row>
-          <Column span={6}>
-            <TextField label={lang.first_name}/>
+          <Column span={12}>
+            <TextField type="email" label={lang.email} autoFill="email"/>
           </Column>
-          <Column span={6}>
-            <TextField label={lang.last_name}/>
+        </Row>
+        <Row>
+          <Column span={6} mobileSpan={12}>
+            <TextField type="name" label={lang.first_name} autoFill="first_name"/>
+          </Column>
+          <Column span={6} mobileSpan={12}>
+            <TextField type="name" label={lang.last_name} autoFill="last_name"/>
           </Column>
         </Row>
       </LayoutContent>

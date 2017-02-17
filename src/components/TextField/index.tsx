@@ -5,6 +5,8 @@ export const namespace = (): string => 'text-field';
 
 export interface TextFieldProps {
   label: string;
+  autoFill?: string;
+  type?: 'name' | 'email';
 }
 
 type TextFieldState = {
@@ -18,12 +20,17 @@ class TextField extends React.Component<TextFieldProps, TextFieldState> {
   };
 
   public render() {
-    const { label } = this.props;
+    const { label, autoFill, type } = this.props;
+
+    let finalType: string = type;
+    if (type === 'name') finalType = 'text';
+
     return (
       <div className={namespace()}>
         <label className={`${namespace()}--wrapper`}>
           <input
-            type="text"
+            type={finalType}
+            name={autoFill}
             className={`${namespace()}--wrapper--input`}
             value={this.state.value}
             onChange={(event: React.ChangeEvent<any>) => this.setState({ value: event.target.value})}
