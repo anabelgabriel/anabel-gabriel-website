@@ -1,5 +1,6 @@
 import * as React from 'react';
 import '../../../styles/components/form/actions/index.scss';
+import { isSafari } from '../../../utils';
 
 export const namespace = (): string => 'form--actions';
 
@@ -19,14 +20,7 @@ class Actions extends React.Component<ActionsProps, ActionsState> {
   };
 
   public componentWillMount() {
-    const ua = navigator.userAgent.toLowerCase();
-    if (ua.indexOf('safari') != -1) {
-      if (ua.indexOf('chrome') > -1) {
-        this.setState({ backdrop: false });
-      } else {
-        this.setState({ backdrop: true });
-      }
-    }
+    this.setState({ backdrop: isSafari() });
   }
 
   public render() {
