@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Button from '../../Button';
 import '../../../styles/components/form/progress/index.scss';
 
 export const namespace = (): string => 'form--progress';
@@ -14,9 +15,13 @@ const Progress: React.SFC<ProgressProps> = ({ children }: ProgressProps): React.
   });
   return (
     <div className={namespace()}>
-      <ul>
-        <li>o</li>
+      <div className={`${namespace()}--placeholder`}/>
+      <ul className={`${namespace()}--dots`}>
+        <li className={`${namespace()}--dots--dot`}/>
       </ul>
+      <div className={`${namespace()}--placeholder`}>
+        <Button flat>Continuer</Button>
+      </div>
     </div>
   );
 }

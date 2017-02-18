@@ -11,10 +11,13 @@ $height: 40px;
     display: block;
 
     &--input {
-      appearance: normal;
+      appearance: none;
+      box-sizing: content-box;
       background: transparent;
       border: none;
       width: 100%;
+      padding: 0;
+      border-radius: 0;
       box-sizing: border-box;
       height: $height;
       line-height: $height;
@@ -22,6 +25,13 @@ $height: 40px;
       color: $gold;
       font-family: $helvetica-neue;
       font-weight: 300;
+
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px $gold inset;
+        -webkit-text-fill-color: $navy-blue;
+      }
     }
 
     &--label {

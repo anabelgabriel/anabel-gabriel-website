@@ -5,18 +5,22 @@
 
 html {
   background: $navy-blue;
-  height: 100vh;
 }
 
 body {
   display: flex;
-  height: 100vh;
-  background: linear-gradient(135deg, $navy-blue, $purple) no-repeat fixed;
-  &>div {
-    flex: 1;
-    background-image: url("../../images/app/background-desktop.png"), url("../../images/app/stars-desktop.png");
-    background-repeat: repeat-x, repeat-x;
-    background-size: (1318px / 2) (492px / 2), (990px / 2) (850px / 2);
+}
+
+.app {
+  &--backdrop {
+    z-index: 1;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url("../../images/app/background-desktop.png"), url("../../images/app/stars-desktop.png"), linear-gradient(135deg, $navy-blue, $purple);
+    background-repeat: repeat-x, repeat-x, no-repeat;
+    background-size: (1318px / 2) (492px / 2), (990px / 2) (850px / 2), 100% 100%;
     animation: stars 40s linear infinite;
 
     @keyframes stars {
@@ -25,9 +29,9 @@ body {
     }
 
     @include mobile {
-      background-image: url("../../images/app/background-mobile.png"), url("../../images/app/stars-desktop.png");
-      background-repeat: repeat-x, repeat-x;
-      background-size: (1318px / 2) (307px / 2), (990px / 2.5) (850px / 2.5);
+      background-image: url("../../images/app/background-mobile.png"), url("../../images/app/stars-desktop.png"), linear-gradient(135deg, $navy-blue, $purple);
+      background-repeat: repeat-x, repeat-x, no-repeat;
+      background-size: (1318px / 2) (307px / 2), (990px / 2.5) (850px / 2.5), 100% 100%;
       animation: stars-mobile 27s linear infinite;
 
       @keyframes stars-mobile {
@@ -36,18 +40,10 @@ body {
       }
     }
   }
-}
 
-.app {
-  &__logo {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    &__icon {
-      @include mobile {
-        width: 84px;
-        height: 58px;
-      }
-    }
+  &--content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
   }
 }

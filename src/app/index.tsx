@@ -1,19 +1,21 @@
 import React from 'react';
 import '../styles/app/index.scss';
-import Logo from '../images/app/logo.svg';
+import { RouteComponentProps } from 'react-router';
 import { Provider } from 'mobx-react';
 
-type AppProps = {
-  children?: React.ReactNode;
+interface AppProps extends RouteComponentProps<any, any> {
+  body?: React.ReactNode;
+  header?: React.ReactNode;
 };
 
-const App = (stores): React.SFC<AppProps> => ({ children }: AppProps): React.ReactElement<AppProps> => (
+const App = (stores): React.SFC<AppProps> => ({ body, header }: AppProps): React.ReactElement<AppProps> =>  (
   <Provider {...stores}>
     <div className="app">
-      <div className="app__logo">
-        <Logo className="app__logo__icon"/>
+      <div className="app--backdrop"/>
+      <div className="app--content">
+        {header}
+        {body}
       </div>
-      {children}
     </div>
   </Provider>
 );

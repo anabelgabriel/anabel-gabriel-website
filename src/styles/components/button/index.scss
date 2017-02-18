@@ -1,0 +1,21 @@
+@import "../../colors";
+@import "../../fonts";
+
+$class: "button";
+
+.#{$class} {
+  background: $gold;
+  color: $navy-blue;
+  border: none;
+  line-height: 40px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 3px;
+  font-family: $cormorant-sc;
+  font-size: 18px;
+
+  &--flat {
+    background: transparent;
+    color: $gold;
+  }
+}
