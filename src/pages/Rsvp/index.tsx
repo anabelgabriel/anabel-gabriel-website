@@ -29,7 +29,7 @@ const Rsvp: React.SFC<RsvpProps> = ({ lang }: RsvpProps): React.ReactElement<Rsv
             <Radio label={lang.decline}/>
           </RadioGroup>
         </Row>
-        
+
         <FormActions>
           <FormProgress>
             <FormProgressStep/>

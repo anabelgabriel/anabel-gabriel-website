@@ -1,7 +1,7 @@
 import {observable} from "mobx";
 
 class App {
-  @observable public preventScolling: boolean = false;
+  @observable public drawerOpen: boolean = false;
 }
 
 export default App;

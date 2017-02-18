@@ -12,33 +12,16 @@ export interface HeaderProps {
   drawer: boolean;
 }
 
-interface HeaderState {
-  drawerOpen: boolean;
-}
-
 const Header = ({ drawer }: HeaderProps): React.ComponentClass<void> => {
-  class Header extends React.Component<{ app: App }, HeaderState> {
-    public state: HeaderState = {
-      drawerOpen: false
-    };
-
-    componentWillMount() {
-    }
-
+  class Header extends React.PureComponent<{ app: App }, void> {
     public handleDrawerClick = () => {
-      const nextState = !this.state.drawerOpen;
-      this.props.app.preventScolling = nextState;
-      this.setState({ drawerOpen: nextState });
-      if (nextState) document.body.className = 'prevent-scrolling';
-      else document.body.className = '';
+      this.props.app.drawerOpen = !this.props.app.drawerOpen;
     };
 
     public render() {
-      const { drawerOpen } = this.state;
-
       return (
         <header className={namespace()}>
-          {drawerOpen ? <Nav/> : null}
+          <Nav/>
           {drawer ? <div className={`${namespace()}--buffer`}/> : null}
           <div className={`${namespace()}--logo`}>
             <Logo className={`${namespace()}--logo--icon`}/>

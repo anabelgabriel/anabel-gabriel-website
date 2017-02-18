@@ -10,16 +10,24 @@ $class: "app--nav";
   right: 0;
   bottom: 0;
   z-index: 1;
+  opacity: 0;
+  transform: translateX(100%);
 
   &--drawer {
     height: 100vh;
-    width: 70vw;
-    padding-left: 30vw;
-    overflow: auto;
+    width: 100vw;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    display: flex;
+
+    &--dead-zone {
+      flex: 0 0 30vw;
+    }
 
     &--content {
-      padding: 20px;
+      flex: 0 0 70vw;
+      box-sizing: border-box;
+      width: 70vw;
       color: white;
     }
   }
@@ -35,4 +43,24 @@ $class: "app--nav";
     box-shadow: 0 0 10px black;
     z-index: -1;
   }
+
+  &--open {
+    animation: nav--enter .4s cubic-bezier(.4,0,.2,1) forwards;
+  }
+
+  &--close {
+    animation: nav--leave .4s cubic-bezier(.4,0,.2,1) forwards;
+  }
+}
+
+@keyframes nav--enter {
+  0% { opacity: 0; }
+  1% { transform: translateX(100%); opacity: 1; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes nav--leave {
+  0% { transform: translateX(0); opacity: 1; }
+  99% { transform: translateX(100%); opacity: 1; }
+  100% { opacity: 0; }
 }
