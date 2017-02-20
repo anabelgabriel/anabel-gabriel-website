@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --port 3000 --history-api-fallback --colors",
-    "update": "npm-check-updates -u -a && rm -rf node_modules && npm install && rm -rf yarn.lock && yarn install",
+    "update": "ncu -u -a && rm -rf node_modules && npm install && rm -rf yarn.lock && yarn install",
     "reinstall": "rm -rf node_modules && npm cache clean && yarn install"
   },
   "dependencies": {
@@ -26,11 +26,11 @@
     "@types/node": "^7.0.5",
     "@types/react": "^15.0.11",
     "@types/react-dom": "^0.14.23",
-    "@types/react-router": "^3.0.3",
+    "@types/react-router": "^3.0.4",
     "@types/webpack": "^2.2.6",
     "@types/webpack-dev-server": "^1.12.6",
     "@types/webpack-env": "^1.13.0",
-    "autoprefixer": "^6.7.3",
+    "autoprefixer": "^6.7.4",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
     "babel-plugin-transform-async-to-generator": "^6.22.0",
@@ -42,7 +42,7 @@
     "file-loader": "^0.10.0",
     "json-loader": "^0.5.4",
     "node-sass": "^4.5.0",
-    "postcss-loader": "^1.3.0",
+    "postcss-loader": "^1.3.1",
     "pug": "^2.0.0-beta11",
     "pug-loader": "^2.3.0",
     "react-hot-loader": "^3.0.0-beta.6",
@@ -54,7 +54,7 @@
     "typescript": "^2.2.0",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.3.0",
+    "webpack-dev-server": "^2.4.1",
     "yaml-loader": "^0.4.0"
   }
 }

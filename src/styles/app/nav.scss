@@ -44,17 +44,17 @@ $class: "app--nav";
     z-index: -1;
 
     &--backdrop {
-      background: rgba($navy-blue, .5);
+      background: rgba($navy-blue, .8);
       backdrop-filter: blur(20px);
     }
   }
 
   &--open {
-    animation: nav--enter .4s cubic-bezier(.4,0,.2,1) forwards;
+    animation: nav--enter .6s cubic-bezier(.4,0,.2,1) forwards;
   }
 
   &--close {
-    animation: nav--leave .4s cubic-bezier(.4,0,.2,1) forwards;
+    animation: nav--leave .6s cubic-bezier(.4,0,.2,1) forwards;
   }
 }
 
