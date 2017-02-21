@@ -1,5 +1,9 @@
 import App from './App';
-import Attendees from './Attendees';
+import Attendee from './Attendee';
+import { ObservableMap, observable } from 'mobx';
+import { firebase } from '../utils';
+
+export type Attendees = ObservableMap<Attendee>;
 
 export type Stores = {
   app: App;
@@ -9,11 +13,10 @@ export type Stores = {
 export default (): Stores => {
   const stores: Stores = {
     app: new App(),
-    attendees: new Attendees()
+    attendees: firebase<Attendee>('attendees', observable(new Map()), Attendee),
   };
 
   return stores;
 }
 
 export { default as App } from './App';
-

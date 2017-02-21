@@ -1,6 +1,6 @@
-import FirebaseMapCollection from "../../utils/FirebaseMapCollection";
-import Attendee from './Attendee';
-import {action, observable} from 'mobx';
+//import FirebaseMapCollection from "../../utils/FirebaseMapCollection";
+//import Attendee from './Attendee';
+/*import {action, observable} from 'mobx';
 import firebase from 'firebase';
 import faker from 'faker';
 import DataSnapshot = firebase.database.DataSnapshot;
@@ -14,15 +14,16 @@ var config = {
 };
 firebase.initializeApp(config);
 
-class Attendees extends FirebaseMapCollection<string, Attendee> {
+class Attendees *//* extends FirebaseMapCollection<string, Attendee>*//* {
   constructor() {
     super(firebase.database().ref('attendees'), Attendee);
   }
 
   @action public add = () => {
-    const attendee = new Attendee({ name: faker.name.findName(), email: faker.internet.email() });
-    this.ref.push(attendee);
+    //const attendee = new Attendee({ name: faker.name.findName(), email: faker.internet.email() });
+    //this.ref.push(attendee);
   }
 }
 
 export default Attendees;
+*/

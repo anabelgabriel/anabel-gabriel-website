@@ -2,6 +2,7 @@ import * as React from 'react';
 
 export interface GroupProps {
   children?: React.ReactNode;
+  onChange?: (value: boolean | number | string) => void;
 }
 
 type GroupState = {
@@ -16,11 +17,13 @@ function randomString(length, chars) {
 
 class Group extends React.Component<GroupProps, GroupState> {
   static childContextTypes = {
-    name: React.PropTypes.string
+    name: React.PropTypes.string,
+    onChange: React.PropTypes.func
   };
 
   public getChildContext = () => ({
-    name: this.state.name
+    name: this.state.name,
+    onChange: this.handleChange
   });
 
   public componentWillMount() {
@@ -28,6 +31,10 @@ class Group extends React.Component<GroupProps, GroupState> {
       name: randomString(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
     });
   }
+
+  public handleChange = (value: boolean | number | string) => {
+    if (this.props.onChange) this.props.onChange(value);
+  };
 
   public props: GroupProps;
   public state: GroupState = {

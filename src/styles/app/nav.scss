@@ -1,3 +1,4 @@
+@import "../media";
 @import "../colors";
 
 $class: "app--nav";
@@ -21,27 +22,42 @@ $class: "app--nav";
     display: flex;
 
     &--dead-zone {
-      flex: 0 0 30vw;
+      flex: 1;
     }
 
     &--content {
-      flex: 0 0 70vw;
+      flex: 0 0 320px;
       box-sizing: border-box;
-      width: 70vw;
+      width: 320px;
       color: white;
+    }
+
+    @include mobile {
+      &--dead-zone {
+        flex: 0 0 30vw;
+      }
+
+      &--content {
+        flex: 0 0 70vw;
+        width: 70vw;
+      }
     }
   }
 
   &--drawer-background {
     position: fixed;
     height: 100vh;
-    width: 70vw;
+    width: 320px;
     top: 0;
     right: 0;
     bottom: 0;
     background: $navy-blue;
     box-shadow: 0 0 10px black;
     z-index: -1;
+
+    @include mobile {
+      width: 70vw;
+    }
 
     &--backdrop {
       background: rgba($navy-blue, .6);
