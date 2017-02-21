@@ -1,0 +1,34 @@
+@import "../../media";
+@import "settings";
+
+.#{$tooltip-namespace}__box {
+  padding: 64px 20px 10px 20px;
+  box-sizing: border-box;
+  width: 290px;
+
+  @include mobile {
+    width: calc(100vw - 20px);
+    box-sizing: border-box;
+    padding: 50px 20px 10px 0;
+  }
+
+  &--bottom {
+    padding: 10px 20px 0 20px;
+    @include mobile {
+      padding: 10px 20px 0 0;
+    }
+  }
+
+  &__wrapper {
+    background: rgba(black, .92);
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 19px;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    z-index: 9999999;
+    text-transform: none;
+    box-shadow: 0 2px 20px 0 rgba(black, .3);
+  }
+}

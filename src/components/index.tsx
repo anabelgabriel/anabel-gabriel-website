@@ -5,3 +5,4 @@ export { default as Column } from './Grid/Column';
 export { default as Radio, RadioGroup } from './Radio';
 export { FormActions, FormProgress, FormProgressStep } from './Form';
 export { default as Button } from './Button';
+export { default as Tooltip } from './Tooltip';

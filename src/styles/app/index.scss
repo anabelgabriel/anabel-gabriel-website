@@ -9,9 +9,17 @@ html {
 
 body {
   display: flex;
+
+  &>div:first-child {
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+  }
 }
 
 .app {
+  flex: 1;
+  min-height: 100vh;
   &--backdrop {
     z-index: 1;
     position: fixed;
@@ -45,5 +53,6 @@ body {
     flex: 1;
     position: relative;
     z-index: 1;
+    height: 100%;
   }
 }

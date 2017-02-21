@@ -1,0 +1,8 @@
+@import "../../media";
+@import "../../fonts";
+@import "settings";
+
+.#{$tooltip-namespace} {
+  pointer-events: none;
+  font-family: $helvetica-neue;
+}

@@ -24,11 +24,30 @@ $class: "#{$form-progress-namespace}";
     flex: 1;
 
     &--dot {
-      display: block;
-      width: 5px;
-      height: 5px;
-      background: $gold;
-      border-radius: 50%;
+      &--link {
+        width: 12px;
+        height: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        &--circle {
+          margin: auto;
+          background: rgba(white, .2);
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          &.selected {
+            background: $gold;
+            width: 8px;
+            height: 8px;
+          }
+          &.completed {
+            background: white;
+          }
+        }
+      }
     }
   }
 }

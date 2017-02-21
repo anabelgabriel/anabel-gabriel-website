@@ -27,12 +27,12 @@ const Header = ({ drawer }: HeaderProps): React.ComponentClass<void> => {
             <Logo className={`${namespace()}--logo--icon`}/>
           </div>
           {drawer ? (
-              <a className={`${namespace()}--drawer`} onClick={this.handleDrawerClick}>
-                <div className={`${namespace()}--drawer--button`}>
-                  <Menu className={`${namespace()}--drawer--button--icon`}/>
-                </div>
-              </a>
-            ) : null}
+            <a className={`${namespace()}--drawer`} onClick={this.handleDrawerClick}>
+              <div className={`${namespace()}--drawer--button`}>
+                <Menu className={`${namespace()}--drawer--button--icon`}/>
+              </div>
+            </a>
+          ) : null}
         </header>
       );
     }

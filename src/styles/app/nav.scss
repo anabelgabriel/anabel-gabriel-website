@@ -44,7 +44,7 @@ $class: "app--nav";
     z-index: -1;
 
     &--backdrop {
-      background: rgba($navy-blue, .8);
+      background: rgba($navy-blue, .6);
       backdrop-filter: blur(20px);
     }
   }

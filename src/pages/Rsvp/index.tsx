@@ -31,7 +31,10 @@ const Rsvp: React.SFC<RsvpProps> = ({ lang }: RsvpProps): React.ReactElement<Rsv
         </Row>
 
         <FormActions>
-          <FormProgress>
+          <FormProgress nextDisabled={true}>
+            <FormProgressStep/>
+            <FormProgressStep/>
+            <FormProgressStep selected/>
             <FormProgressStep/>
           </FormProgress>
         </FormActions>

@@ -4,18 +4,37 @@
 $class: "button";
 
 .#{$class} {
-  background: $gold;
-  color: $navy-blue;
-  border: none;
-  line-height: 40px;
-  height: 40px;
-  padding: 0 12px;
-  border-radius: 3px;
-  font-family: $cormorant-sc;
-  font-size: 18px;
+  position: relative;
 
-  &--flat {
-    background: transparent;
-    color: $gold;
+  &--button {
+    background: $gold;
+    color: $navy-blue;
+    border: none;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 3px;
+    font-family: $cormorant-sc;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+
+    &.flat {
+      background: transparent;
+      color: $gold;
+      &:disabled {
+        color: rgba($gray, .6);
+      }
+    }
+
+    &--icon {
+      margin: auto 0px auto 8px;
+      padding-top: 0px;
+    }
+    &:disabled &--icon {
+      * {
+        fill: rgba($gray, .6);
+      }
+    }
   }
 }
