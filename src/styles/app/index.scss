@@ -9,6 +9,8 @@ html {
 
 body {
   display: flex;
+  font-size: 16px;
+  line-height: normal;
 
   &>div:first-child {
     display: flex;

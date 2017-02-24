@@ -7,7 +7,7 @@ import Rsvp from './pages/Rsvp';
 
 export default (stores) => (
   <Route path="/" component={App(stores)}>
-    <IndexRoute components={{ body: Home, header: Header({ drawer: false }) }}/>
+    <IndexRoute components={{ body: Home, header: Header({ inlineNav: true }) }}/>
     <Route path="/rsvp" components={{ body: Rsvp, header: Header({ drawer: true }) }}/>
   </Route>
 );

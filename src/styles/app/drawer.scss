@@ -1,0 +1,123 @@
+@import "../media";
+@import "../colors";
+@import "../fonts";
+
+$class: "app--drawer";
+
+.#{$class} {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  opacity: 0;
+  transform: translateX(100%);
+
+  &--drawer {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+
+    &--dead-zone {
+      flex: 1;
+    }
+
+    &--content {
+      flex: 0 0 320px;
+      box-sizing: border-box;
+      width: 320px;
+      color: white;
+      &--nav {
+        padding: 20px 40px;
+        &--list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          &--item {
+            margin: 0;
+            padding: 0;
+            &--button {
+              display: block;
+              white-space: nowrap;
+              padding: 18px 0;
+              color: $gold;
+              font-family: $cormorant-sc;
+              font-weight: 300;
+              font-size: 1.25rem;
+              text-decoration: none;
+              transition: .2s;
+              will-change: transform;
+
+              &:hover {
+                color: white;
+                transform: scale(1.1);
+                text-shadow: 0 0 10px rgba(white, .5), 0 0 5px rgba(white, .5), 0 0 1px $navy-blue;
+              }
+              &:active {
+                color: white;
+                transform: scale(0.8);
+                text-shadow: 0 0 10px rgba(black, .5), 0 0 5px rgba(black, .5), 0 0 1px $navy-blue;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @include mobile {
+      &--dead-zone {
+        flex: 0 0 30vw;
+      }
+
+      &--content {
+        flex: 0 0 70vw;
+        width: 70vw;
+      }
+    }
+  }
+
+  &--drawer-background {
+    position: fixed;
+    height: 100vh;
+    width: 320px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: $navy-blue;
+    box-shadow: 0 0 10px black;
+    z-index: -1;
+
+    @include mobile {
+      width: 70vw;
+    }
+
+    &--backdrop {
+      background: rgba($navy-blue, .6);
+      backdrop-filter: blur(20px);
+    }
+  }
+
+  &--open {
+    animation: nav--enter .6s cubic-bezier(.4,0,.2,1) forwards;
+  }
+
+  &--close {
+    animation: nav--leave .6s cubic-bezier(.4,0,.2,1) forwards;
+  }
+}
+
+@keyframes nav--enter {
+  0% { opacity: 0; }
+  1% { transform: translateX(100%); opacity: 1; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes nav--leave {
+  0% { transform: translateX(0); opacity: 1; }
+  99% { transform: translateX(100%); opacity: 1; }
+  100% { opacity: 0; }
+}

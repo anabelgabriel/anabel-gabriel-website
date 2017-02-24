@@ -2,55 +2,67 @@
 $class: "app--header";
 
 .#{$class} {
-  padding-top: 30px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  &--logo {
-    flex: 2;
-    display: flex;
-    justify-content: center;
-    &--icon {
-      @include mobile {
-        width: 84px;
-        height: 58px;
-      }
-    }
-  }
-  &--buffer {
-    flex: 0 0 58px;
-  }
-  &--drawer {
-    flex: 0 0 58px;
+  flex-direction: column;
+  padding-top: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+
+  &--bar {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 58px;
-    height: 58px;
-    box-sizing: border-box;
-    cursor: pointer;
-
-    &--button {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      transition: background .2s;
+    &--logo {
+      flex: 2;
+      display: flex;
+      justify-content: center;
       &--icon {
-        margin: 13px 0 0 11px;
-        width: 18px;
-        height: 12.5px;
+        @include mobile {
+          width: 84px;
+          height: 58px;
+        }
+      }
+      &.extra-padding {
+        padding-top: 76px;
       }
     }
 
-    &:hover {
-      .#{$class}--drawer--button {
-        background: rgba(black, .2);
-      }
+    &--buffer {
+      flex: 0 0 58px;
     }
+    &--drawer {
+      flex: 0 0 58px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 58px;
+      height: 58px;
+      box-sizing: border-box;
+      cursor: pointer;
 
-    &:active {
-      .#{$class}--drawer--button {
-        background: rgba(black, .4);
+      &--button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        transition: background .2s;
+        &--icon {
+          margin: 13px 0 0 11px;
+          width: 18px;
+          height: 12.5px;
+        }
+      }
+
+      &:hover {
+        .#{$class}--drawer--button {
+          background: rgba(black, .2);
+        }
+      }
+
+      &:active {
+        .#{$class}--drawer--button {
+          background: rgba(black, .4);
+        }
       }
     }
   }
