@@ -7,3 +7,4 @@ export { default as Form, FormActions, FormProgress, FormProgressStep } from './
 export { default as Button } from './Button';
 export { default as Tooltip } from './Tooltip';
 export { default as View } from './View';
+export { default as Paragraph } from './Paragraph';

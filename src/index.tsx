@@ -24,7 +24,13 @@ const routes = createRoutes(stores);
 const render = () => {
   ReactDOM.render(
     <AppContainer>
-      <Router history={browserHistory}>
+      <Router
+        history={browserHistory}
+        onUpdate={() => {
+          window.scrollTo(0, 0);
+          stores.app.drawerOpen = false;
+        }}
+      >
         {routes}
       </Router>
     </AppContainer>,

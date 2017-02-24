@@ -7,20 +7,30 @@ import { Link } from 'react-router';
 
 export const namespace = (): string => 'app--drawer';
 
+export type DrawerNavSelected = 'home' | 'rsvp';
+
+interface DrawerProps {
+  app?: App;
+  selected: DrawerNavSelected;
+}
+
 interface DrawerState {
   wasOpen: boolean;
   backdrop: boolean;
 }
 
-type DrawerItemProps = { to: string; children?: React.ReactNode; };
+type DrawerItemProps = { to: string; children?: React.ReactNode; selected: boolean; };
 const DrawerItem: React.SFC<DrawerItemProps> = ({ to, children }: DrawerItemProps): React.ReactElement<DrawerItemProps> => (
   <li className={`${namespace()}--drawer--content--nav--list--item`}>
-    <Link to={to} className={`${namespace()}--drawer--content--nav--list--item--button`}>{children}</Link>
+    <Link to={to} className={`${namespace()}--drawer--content--nav--list--item--button`}>
+      <span className={`${namespace()}--drawer--content--nav--list--item--button--text`}>{children}</span>
+    </Link>
   </li>
 );
 
 @inject('app') @observer
-class Drawer extends React.Component<{ app?: App }, DrawerState> {
+class Drawer extends React.Component<DrawerProps, DrawerState> {
+  public props: DrawerProps;
   public state: DrawerState = {
     wasOpen: false,
     backdrop: false
@@ -41,24 +51,27 @@ class Drawer extends React.Component<{ app?: App }, DrawerState> {
   }
 
   public render() {
+    const { app, selected } = this.props;
+    const { wasOpen } = this.state;
     return (
-      <div className={namespace() + (this.props.app.drawerOpen ? ` ${namespace()}--open` : (this.state.wasOpen ? ` ${namespace()}--close` : ''))}>
+      <div className={namespace() + (app.drawerOpen ? ' open' : (wasOpen ? ' close' : ''))}>
         <div className={`${namespace()}--drawer`}>
           <div  className={`${namespace()}--drawer--dead-zone`} onClick={this.handleDeadZoneClick}/>
           <div className={`${namespace()}--drawer--content`}>
             <nav className={`${namespace()}--drawer--content--nav`}>
               <ul className={`${namespace()}--drawer--content--nav--list`}>
-                <DrawerItem to="/rsvp">RSVP</DrawerItem>
-                <DrawerItem to="/rsvp">Menu</DrawerItem>
-                <DrawerItem to="/rsvp">Hébergement</DrawerItem>
-                <DrawerItem to="/rsvp">Île Narvak</DrawerItem>
-                <DrawerItem to="/rsvp">Déroulement</DrawerItem>
-                <DrawerItem to="/rsvp">Mémos</DrawerItem>
+                <DrawerItem to="/" selected={selected === 'home'}>Home</DrawerItem>
+                <DrawerItem to="/rsvp" selected={selected === 'home'}>RSVP</DrawerItem>
+                <DrawerItem to="/" selected={false}>Menu</DrawerItem>
+                <DrawerItem to="/" selected={false}>Hébergement</DrawerItem>
+                <DrawerItem to="/" selected={false}>Île Narvak</DrawerItem>
+                <DrawerItem to="/" selected={false}>Déroulement</DrawerItem>
+                <DrawerItem to="/" selected={false}>Mémos</DrawerItem>
               </ul>
             </nav>
           </div>
         </div>
-        <div className={`${namespace()}--drawer-background` + (this.state.backdrop ? ` ${namespace()}--drawer-background--backdrop` : '')}/>
+        <div className={`${namespace()}--drawer-background` + (this.state.backdrop ? ' has-backdrop' : '')}/>
       </div>
     );
   }

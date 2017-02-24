@@ -31,8 +31,11 @@ $class: "app--drawer";
       box-sizing: border-box;
       width: 320px;
       color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       &--nav {
-        padding: 20px 40px;
+        padding: 20px 0;
         &--list {
           list-style: none;
           margin: 0;
@@ -40,24 +43,39 @@ $class: "app--drawer";
           &--item {
             margin: 0;
             padding: 0;
+            overflow: hidden;
             &--button {
               display: block;
               white-space: nowrap;
-              padding: 18px 0;
-              color: $gold;
-              font-family: $cormorant-sc;
-              font-weight: 300;
-              font-size: 1.25rem;
               text-decoration: none;
-              transition: .2s;
-              will-change: transform;
+              background-color: transparent;
+              transition: background-color .2s;
+              &--text {
+                padding: 18px 0;
+                display: block;
+                color: $gold;
+                font-family: $cormorant-sc;
+                font-weight: 300;
+                font-size: 1.25rem;
+                transition: .2s;
+                will-change: transform;
+                text-align: center;
+              }
 
               &:hover {
+                background-color: darken($navy-blue, 3%);
+              }
+              &:hover &--text {
                 color: white;
                 transform: scale(1.1);
                 text-shadow: 0 0 10px rgba(white, .5), 0 0 5px rgba(white, .5), 0 0 1px $navy-blue;
               }
+
               &:active {
+                background-color: darken($navy-blue, 5%);
+              }
+
+              &:active &--text {
                 color: white;
                 transform: scale(0.8);
                 text-shadow: 0 0 10px rgba(black, .5), 0 0 5px rgba(black, .5), 0 0 1px $navy-blue;
@@ -88,24 +106,24 @@ $class: "app--drawer";
     right: 0;
     bottom: 0;
     background: $navy-blue;
-    box-shadow: 0 0 10px black;
+    box-shadow: 0 2px 4px rgba(black, .5);
     z-index: -1;
 
     @include mobile {
       width: 70vw;
     }
 
-    &--backdrop {
+    &.has-backdrop {
       background: rgba($navy-blue, .6);
       backdrop-filter: blur(20px);
     }
   }
 
-  &--open {
+  &.open {
     animation: nav--enter .6s cubic-bezier(.4,0,.2,1) forwards;
   }
 
-  &--close {
+  &.close {
     animation: nav--leave .6s cubic-bezier(.4,0,.2,1) forwards;
   }
 }

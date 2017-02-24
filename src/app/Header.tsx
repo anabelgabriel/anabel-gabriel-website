@@ -5,7 +5,7 @@ import '../styles/app/header.scss';
 import { observer, inject } from 'mobx-react';
 import App from "../stores/App/index";
 import Nav from './Nav';
-import Drawer from './Drawer';
+import { default as Drawer, DrawerNavSelected } from './Drawer';
 import { Link } from 'react-router';
 
 export const namespace = (): string => 'app--header';
@@ -13,9 +13,10 @@ export const namespace = (): string => 'app--header';
 export interface HeaderProps {
   drawer?: boolean;
   inlineNav?: boolean;
+  selected: DrawerNavSelected;
 }
 
-const Header = ({ drawer, inlineNav }: HeaderProps): React.ComponentClass<void> => {
+const Header = ({ drawer, inlineNav, selected }: HeaderProps): React.ComponentClass<void> => {
   class Header extends React.PureComponent<{ app: App }, void> {
     public handleDrawerClick = () => {
       this.props.app.drawerOpen = !this.props.app.drawerOpen;
@@ -24,7 +25,7 @@ const Header = ({ drawer, inlineNav }: HeaderProps): React.ComponentClass<void> 
     public render() {
       return (
         <header className={namespace()}>
-          <Drawer/>
+          <Drawer selected={selected}/>
           <div className={`${namespace()}--bar`}>
             {drawer ? <div className={`${namespace()}--bar--buffer`}/> : null}
             <div className={`${namespace()}--bar--logo` + (inlineNav ? ' extra-padding' : '')}>

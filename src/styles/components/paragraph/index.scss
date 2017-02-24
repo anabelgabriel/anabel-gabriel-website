@@ -1,0 +1,26 @@
+@import "../../fonts";
+@import "../../colors";
+
+$class: "paragraph";
+
+.#{$class} {
+  color: $gold;
+  font-family: $helvetica-neue;
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 1.5;
+
+  &.align-center {
+    text-align: center;
+  }
+
+  &.font-cormorant {
+    font-family: $cormorant-sc;
+    font-weight: 300;
+  }
+
+  &.font-edwardian {
+    font-family: $edwardian;
+    font-weight: 300;
+  }
+}

@@ -1,0 +1,12 @@
+$class: "home";
+
+.#{$class} {
+  &--images {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    &--image {
+      box-shadow: 0 2px 4px rgba(black, .5);
+    }
+  }
+}
