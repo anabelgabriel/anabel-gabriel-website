@@ -14,17 +14,16 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: PROD ? '/' : 'http://localhost:3000/'
   },
 
   context: path.resolve(__dirname, 'src'),
 
-  devtool: (!PROD ? 'inline-eval-cheap-source-map' : null),
+  devtool: (!PROD ? 'source-map' : null),
 
   devServer: {
     hot: true,
-    contentBase: path.resolve(__dirname),
-    publicPath: '/'
+    contentBase: path.resolve(__dirname)
   },
 
   resolve: {
@@ -32,48 +31,95 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader!ts-loader'
+        use: [
+          {
+            loader: 'babel-loader',
+            query: {
+              cacheDirectory: true
+            }
+          },
+          {
+            loader: 'awesome-typescript-loader',
+            options: {
+              useBabel: true,
+              useCache: true
+            }
+          }
+        ]
       },
       {
         test: /\.scss|\.css$/,
-        loader: 'style-loader!' + 'css-loader!' + 'postcss-loader!' + 'sass-loader'
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            query: PROD ? null : {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [autoprefixer]
+            }
+          },
+          {
+            loader: 'sass-loader',
+            query: PROD ? null : {
+              sourceMap: true,
+              sourceComments: true
+            }
+          }
+        ]
       },
       {
         test: /\.pug|\.jade/,
-        loader: 'json-loader!pug-loader'
+        use: [
+          'json-loader',
+          'pug-loader'
+        ]
       },
       {
         test: /\.yml|\.yaml/,
-        loader: 'json-loader!yaml-loader'
+        use: [
+          'json-loader',
+          'yaml-loader'
+        ]
       },
       {
         test: /\.svg$/,
-        loader: 'babel-loader?presets[]=es2015,presets[]=react!svg-react-loader'
+        use: [
+          {
+            loader: 'babel-loader',
+            query: {
+              presets: ['es2015', 'react']
+            }
+          },
+          'svg-react-loader'
+        ]
       },
       {
         test: /\.(gif|png|jpg)$/,
-        loader: 'url-loader?limit=8192'
+        use: {
+          loader: 'url-loader',
+          query: {
+            limit: '8192'
+          }
+        }
       },
       {
         test: /\.(eot|ttf|woff|woff2)$/,
-        loader: 'file-loader'
+        use: 'file-loader'
       }
     ]
   },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        postcss: function () {
-          return [autoprefixer];
-        }
-      }
-    })
+    new webpack.NamedModulesPlugin()
   ]
 };
