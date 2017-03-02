@@ -2,7 +2,8 @@ import * as React from 'react';
 
 export interface GroupProps {
   children?: React.ReactNode;
-  onChange?: (value: boolean | number | string) => void;
+  onChange: (value: boolean | number | string) => void;
+  value: boolean | number | string;
 }
 
 type GroupState = {
@@ -18,11 +19,13 @@ function randomString(length, chars) {
 class Group extends React.Component<GroupProps, GroupState> {
   static childContextTypes = {
     name: React.PropTypes.string,
+    selected: React.PropTypes.any,
     onChange: React.PropTypes.func
   };
 
   public getChildContext = () => ({
     name: this.state.name,
+    selected: this.props.value,
     onChange: this.handleChange
   });
 

@@ -1,12 +1,19 @@
+@import "../../media";
+
 $class: "home";
 
 .#{$class} {
   &--images {
-    display: flex;
     width: 100%;
-    justify-content: center;
     &--image {
       box-shadow: 0 2px 4px rgba(black, .5);
+      width: 496px;
+      height: 162px;
+
+      @include mobile {
+        width: 100%;
+        height: auto;
+      }
     }
   }
 }

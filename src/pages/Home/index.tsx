@@ -13,14 +13,14 @@ export interface ComponentProps {
 const Component:React.SFC<any> = ({ attendees }: ComponentProps):React.ReactElement<ComponentProps> => {
   return (
     <Layout>
-      <LayoutContent maxWidth={760}>
+      <LayoutContent maxWidth={760} desktop tablet>
         <Paragraph align="center" font="edwardian" size={30}>
           Vous êtes invités au mariage d’Anabel et Gabriel. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Suspendisse ante nunc, commodo et pretium in, pharetra non felis.
         </Paragraph>
       </LayoutContent>
       <div className={`${namespace()}--images`}>
-        <img src={require('../../images/home/wines@2x.jpg')} width="496" height="162" className={`${namespace()}--images--image`}/>
+        <img src={require('../../images/home/wines@2x.jpg')} className={`${namespace()}--images--image`}/>
       </div>
     </Layout>
   );

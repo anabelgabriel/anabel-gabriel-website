@@ -2,12 +2,14 @@ import * as React from 'react';
 import { TextField, Column, Row, Radio, RadioGroup, Form, FormActions, FormProgress, FormProgressStep } from '../../../components';
 import { i18n } from '../../../utils';
 import Attendee from "../../../stores/Attendee/index";
+import { inject, observer } from 'mobx-react';
 
 interface AttendeeProps {
   lang?: any;
   attendee: Attendee;
 };
 
+@observer
 class AttendeeComponent extends React.Component<AttendeeProps, void> {
   public props: AttendeeProps;
 
@@ -16,34 +18,55 @@ class AttendeeComponent extends React.Component<AttendeeProps, void> {
   };
 
   public render() {
-    const { lang } = this.props;
-
+    const { lang, attendee } = this.props;
+    const validation = attendee.validate();
     return (
       <Form onSubmit={this.handleSubmit}>
         <Row>
           <Column span={6} mobileSpan={12}>
-            <TextField type="name" label={lang.first_name} autoFill="first_name" value={this.props.attendee.firstName} onChange={value => this.props.attendee.firstName = value as string}/>
+            <TextField
+              type="name"
+              label={lang.first_name}
+              autoFill="first_name"
+              value={attendee.firstName}
+              onChange={value => attendee.firstName = value as string}
+              valid={validation.get('firstName') === true}
+            />
           </Column>
           <Column span={6} mobileSpan={12}>
-            <TextField type="name" label={lang.last_name} autoFill="last_name" value={this.props.attendee.lastName} onChange={value => this.props.attendee.lastName = value as string}/>
+            <TextField
+              type="name"
+              label={lang.last_name}
+              autoFill="last_name"
+              value={attendee.lastName}
+              onChange={value => attendee.lastName = value as string}
+              valid={validation.get('lastName') === true}
+            />
           </Column>
         </Row>
         <Row>
           <Column span={12}>
-            <TextField type="email" label={lang.email} autoFill="email" value={this.props.attendee.email} onChange={value => this.props.attendee.email = value as string}/>
+            <TextField
+              type="email"
+              label={lang.email}
+              autoFill="email"
+              value={attendee.email}
+              onChange={value => attendee.email = value as string}
+              valid={validation.get('email') === true}
+            />
           </Column>
         </Row>
         <Row>
-          <RadioGroup onChange={value => console.log(value)}>
+          <RadioGroup value={attendee.isAttending} onChange={value => attendee.isAttending = value as boolean}>
             <Radio label={lang.accept} value={true}/>
             <Radio label={lang.decline} value={false}/>
           </RadioGroup>
         </Row>
         <FormActions>
-          <FormProgress nextDisabled={false}>
-            <FormProgressStep/>
-            <FormProgressStep/>
+          <FormProgress nextDisabled={!attendee.isValid()}>
             <FormProgressStep selected/>
+            <FormProgressStep/>
+            <FormProgressStep/>
             <FormProgressStep/>
           </FormProgress>
         </FormActions>

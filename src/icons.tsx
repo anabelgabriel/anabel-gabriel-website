@@ -15,5 +15,5 @@ const Icon = (Element: React.ReactType): React.SFC<IconProps> => ({ className, w
   return React.cloneElement(element, props);
 };
 
-import Next from './images/icons/next.svg';
-export const NextIcon = Icon(Next);
+export const NextIcon = Icon(require('./images/icons/next.svg'));
+export const CheckMarkIcon = Icon(require('./images/icons/check-mark.svg'));

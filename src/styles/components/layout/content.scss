@@ -7,6 +7,25 @@ $class: "#{$layout-namespace}--content";
   max-width: 568px;
   margin: 0 auto;
 
+  &.hide-all-except {
+    display: none;
+    &.show-mobile {
+      @include mobile {
+        display: block;
+      }
+    }
+    &.show-tablet {
+      @include tablet {
+        display: block;
+      }
+    }
+    &.show-desktop {
+      @include desktop {
+        display: block;
+      }
+    }
+  }
+
   @include mobile {
     width: 100vw;
     box-sizing: border-box;

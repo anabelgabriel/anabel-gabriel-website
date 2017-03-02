@@ -1,24 +1,26 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
 import '../../styles/components/text-field/index.scss';
+import { CheckMarkIcon } from '../../icons';
 
-export const namespace = (): string => 'text-field';
+const namespace = (): string => 'text-field';
 
-export interface TextFieldProps {
+interface Props {
   label: string;
   autoFill?: string;
   type?: 'name' | 'email';
   value?: number | string;
   onChange?: (value: boolean | number | string) => void;
+  valid?: boolean;
 }
 
-type TextFieldState = {
+interface State {
   value?: string;
 };
 
-class TextField extends React.Component<TextFieldProps, TextFieldState> {
-  public props: TextFieldProps;
-  public state: TextFieldState = {
+class TextField<P extends Props> extends React.Component<Props, State> {
+  public props: Props;
+  public state: State = {
     value: ''
   };
 
@@ -41,7 +43,7 @@ class TextField extends React.Component<TextFieldProps, TextFieldState> {
   }
 
   public render() {
-    const { label, autoFill, type, onChange } = this.props;
+    const { label, autoFill, type, onChange, valid } = this.props;
 
     let finalType: string = type;
     if (type === 'name') finalType = 'text';
@@ -53,7 +55,7 @@ class TextField extends React.Component<TextFieldProps, TextFieldState> {
             type={finalType}
             name={autoFill}
             className={`${namespace()}--wrapper--input`}
-            value={this.state.value}
+            value={this.isControlled ? this.props.value : this.state.value}
             onChange={(event: React.ChangeEvent<any>) => {
               if (!this.isControlled) this.setState({ value: event.target.value});
               if (onChange) onChange(event.target.value);
@@ -64,6 +66,11 @@ class TextField extends React.Component<TextFieldProps, TextFieldState> {
           >
             {label}
           </span>
+          {valid ? (
+            <div className={`${namespace()}--wrapper--valid-icon`}>
+              <CheckMarkIcon width={16} height={16} className={`${namespace()}--wrapper--valid-icon--image`}/>
+            </div>
+          ) : null}
           <div className={`${namespace()}--wrapper--border` + (this.value ? ` ${namespace()}--wrapper--border--has-content` : '')}/>
         </label>
       </div>

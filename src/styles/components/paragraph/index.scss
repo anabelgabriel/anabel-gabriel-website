@@ -1,5 +1,6 @@
 @import "../../fonts";
 @import "../../colors";
+@import "../../media";
 
 $class: "paragraph";
 
@@ -9,6 +10,25 @@ $class: "paragraph";
   font-weight: 100;
   font-size: 16px;
   line-height: 1.5;
+
+  &.hide-all-except {
+    display: none;
+    &.mobile {
+      @include mobile {
+        display: block;
+      }
+    }
+    &.tablet {
+      @include tablet {
+        display: block;
+      }
+    }
+    &.desktop {
+      @include desktop {
+        display: block;
+      }
+    }
+  }
 
   &.align-center {
     text-align: center;

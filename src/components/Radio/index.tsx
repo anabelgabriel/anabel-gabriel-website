@@ -10,10 +10,11 @@ export interface RadioProps {
 
 type RadioContext = {
   name: string;
+  selected: boolean | number | string;
   onChange: (value: boolean | number | string) => void;
 };
 
-const Radio: React.SFC<RadioProps> = ({ label, value }: RadioProps, { name, onChange }: RadioContext): React.ReactElement<RadioProps> => {
+const Radio: React.SFC<RadioProps> = ({ label, value }: RadioProps, { name, onChange, selected }: RadioContext): React.ReactElement<RadioProps> => {
   let finalValue: string | number;
   if (typeof value === 'boolean') finalValue = value ? '1' : '0';
   else finalValue = value;
@@ -25,7 +26,7 @@ const Radio: React.SFC<RadioProps> = ({ label, value }: RadioProps, { name, onCh
       } else {
         onChange(event.target.value);
       }
-    }} value={finalValue}/>
+    }} value={finalValue} checked={selected === value}/>
       <div className={`${namespace()}--checkbox`}/>
       <span className={`${namespace()}--label`}>{label}</span>
     </label>
@@ -34,6 +35,7 @@ const Radio: React.SFC<RadioProps> = ({ label, value }: RadioProps, { name, onCh
 
 Radio.contextTypes = {
   name: React.PropTypes.string,
+  selected: React.PropTypes.any,
   onChange: React.PropTypes.func
 };
 
