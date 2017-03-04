@@ -2,6 +2,7 @@ import * as React from 'react';
 import { findDOMNode } from 'react-dom';
 import '../../styles/components/button/index.scss';
 import { NextIcon, PrevIcon } from '../../icons'
+import { Link } from 'react-router';
 
 export const namespace = (): string => 'button';
 
@@ -14,6 +15,7 @@ export interface ButtonProps {
   icon?: 'next' | 'prev';
   disabled?: boolean;
   loading?: boolean;
+  to?: string;
 }
 
 interface ButtonState {
@@ -47,7 +49,7 @@ class Button extends React.PureComponent<ButtonProps, ButtonState> {
   };
 
   public render() {
-    const { submit, children, flat, icon, disabled, tooltip, iconAfter, loading } = this.props;
+    const { submit, children, flat, icon, disabled, tooltip, iconAfter, loading, to } = this.props;
     const { showTooltip } = this.state;
     let className = namespace();
     let buttonClassName = `${namespace()}--button`;
@@ -68,6 +70,33 @@ class Button extends React.PureComponent<ButtonProps, ButtonState> {
     let finalChildren: React.ReactNode = children;
     if (typeof finalChildren === 'string') finalChildren = <span className={`${namespace()}--button--text`}>{children}</span>;
 
+    let button: React.ReactElement<any>;
+    if (to && !to.match(/^[a-zA-Z]*:\/\//)) {
+      button = (
+        <Link to={to} className={buttonClassName}>
+          {!iconAfter ? iconComponent : null}
+          {finalChildren}
+          {iconAfter ? iconComponent : null}
+        </Link>
+      );
+    } else if (to) {
+      button = (
+        <a href={to} className={buttonClassName} target="_blank">
+          {!iconAfter ? iconComponent : null}
+          {finalChildren}
+          {iconAfter ? iconComponent : null}
+        </a>
+      );
+    } else {
+      button = (
+        <button type={submit ? 'submit' : 'button'} className={buttonClassName} disabled={disabled}>
+          {!iconAfter ? iconComponent : null}
+          {finalChildren}
+          {iconAfter ? iconComponent : null}
+        </button>
+      );
+    }
+
     return (
       <div
         className={className}
@@ -78,11 +107,7 @@ class Button extends React.PureComponent<ButtonProps, ButtonState> {
         {loading ? (
           <img src={require('../../images/components/loader/loader.gif')}/>
         ) : (
-          <button type={submit ? 'submit' : 'button'} className={buttonClassName} disabled={disabled}>
-            {!iconAfter ? iconComponent : null}
-            {finalChildren}
-            {iconAfter ? iconComponent : null}
-          </button>
+          button
         )}
         {disabled && tooltip && showTooltip ? React.cloneElement(tooltip, { ...tooltip.props, target: () => findDOMNode(this) }) : null}
       </div>

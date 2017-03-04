@@ -1,9 +1,21 @@
+@import "../../media";
+
 $class: "accommodation";
 
 .#{$class} {
   &--photo {
-    width: 100%;
-    height: auto;
-    box-shadow: 0 2px 4px rgba(black, .5);
+    max-width: 568px;
+    margin: 0 auto;
+
+    @include mobile {
+      width: 100vw;
+      box-sizing: border-box;
+    }
+
+    &--image {
+      width: 100%;
+      height: auto;
+      box-shadow: 0 2px 4px rgba(black, .5);
+    }
   }
 }

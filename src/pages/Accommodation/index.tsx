@@ -63,7 +63,9 @@ class Accommodation extends React.Component<Props, State> {
 
     return (
       <Layout className={namespace()}>
-        <Image src={require('../../images/accommodation/hotel.jpg')} className={`${namespace()}--photo`}/>
+        <View className={`${namespace()}--photo`}>
+          <Image src={require('../../images/accommodation/hotel.jpg')} className={`${namespace()}--photo--image`}/>
+        </View>
         <LayoutContent>
           <Paragraph>
             Pour les personnes intéressées, nous séjournerons à l’hôtel de Mortagne.
@@ -72,11 +74,13 @@ class Accommodation extends React.Component<Props, State> {
             Celui-ci est situé à seulement huit minutes de l’île Navark.
           </Paragraph>
           <Row horizontalAlign="center">
-            <Button>Réserver</Button>
+            <Button to="http://www.hotelmortagne.com/">Réserver</Button>
           </Row>
           <Ornament/>
         </LayoutContent>
-        <Image src={require('../../images/accommodation/sens.jpg')} className={`${namespace()}--photo`}/>
+        <View className={`${namespace()}--photo`}>
+          <Image src={require('../../images/accommodation/sens.jpg')} className={`${namespace()}--photo--image`}/>
+        </View>
         <LayoutContent>
           <Paragraph>
             Pour ceux qui seront présents à l’hôtel, nous ferons un souper le vendredi 7 juillet, ainsi qu’un brunch

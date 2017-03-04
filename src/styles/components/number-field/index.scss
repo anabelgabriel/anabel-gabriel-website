@@ -24,12 +24,10 @@ $height: 40px;
     font-family: $helvetica-neue;
     font-weight: 300;
     text-align: center;
-
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus,
-    &:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0px 1000px $gold inset;
-      -webkit-text-fill-color: $navy-blue;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
     }
   }
 
