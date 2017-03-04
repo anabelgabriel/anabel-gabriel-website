@@ -58,6 +58,9 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
         <div className={`${namespace()}--drawer`}>
           <div  className={`${namespace()}--drawer--dead-zone`} onClick={this.handleDeadZoneClick}/>
           <div className={`${namespace()}--drawer--content`}>
+            <div className={`${namespace()}--drawer--content--flowers-top`}>
+              <img src={require('../images/nav/flowers-top.png')} className={`${namespace()}--drawer--content--flowers-top--image`}/>
+            </div>
             <nav className={`${namespace()}--drawer--content--nav`}>
               <ul className={`${namespace()}--drawer--content--nav--list`}>
                 <DrawerItem to="/" selected={selected === 'home'}>Home</DrawerItem>
@@ -69,6 +72,9 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
                 <DrawerItem to="/" selected={false}>Mémos</DrawerItem>
               </ul>
             </nav>
+            <div className={`${namespace()}--drawer--content--flowers-bottom`}>
+              <img src={require('../images/nav/flowers-bottom.png')} className={`${namespace()}--drawer--content--flowers-bottom--image`}/>
+            </div>
           </div>
         </div>
         <div className={`${namespace()}--drawer-background` + (this.state.backdrop ? ' has-backdrop' : '')}/>
