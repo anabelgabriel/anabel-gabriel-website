@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
 import '../../styles/components/button/index.scss';
-import { NextIcon } from '../../icons'
+import { NextIcon, PrevIcon } from '../../icons'
 
 export const namespace = (): string => 'button';
 
@@ -10,8 +10,10 @@ export interface ButtonProps {
   tooltip?: React.ReactElement<any>;
   submit?: boolean;
   flat?: boolean;
-  icon?: 'next';
+  iconAfter?: boolean;
+  icon?: 'next' | 'prev';
   disabled?: boolean;
+  loading?: boolean;
 }
 
 interface ButtonState {
@@ -45,7 +47,7 @@ class Button extends React.PureComponent<ButtonProps, ButtonState> {
   };
 
   public render() {
-    const { submit, children, flat, icon, disabled, tooltip } = this.props;
+    const { submit, children, flat, icon, disabled, tooltip, iconAfter, loading } = this.props;
     const { showTooltip } = this.state;
     let className = namespace();
     let buttonClassName = `${namespace()}--button`;
@@ -57,11 +59,14 @@ class Button extends React.PureComponent<ButtonProps, ButtonState> {
         case 'next':
           iconComponent = <NextIcon className={`${namespace()}--button--icon`}/>;
           break;
+        case 'prev':
+          iconComponent = <PrevIcon className={`${namespace()}--button--icon`}/>;
+          break;
       }
     }
 
     let finalChildren: React.ReactNode = children;
-    if (typeof finalChildren === 'string') finalChildren = <span>{children}</span>;
+    if (typeof finalChildren === 'string') finalChildren = <span className={`${namespace()}--button--text`}>{children}</span>;
 
     return (
       <div
@@ -70,10 +75,15 @@ class Button extends React.PureComponent<ButtonProps, ButtonState> {
         onMouseOut={disabled ? this.handleMouseOut : null}
         onTouchStart={disabled ? this.handleTouchStart : null}
       >
-        <button type={submit ? 'submit' : 'button'} className={buttonClassName} disabled={disabled}>
-          {finalChildren}
-          {iconComponent}
-        </button>
+        {loading ? (
+          <img src={require('../../images/components/loader/loader.gif')}/>
+        ) : (
+          <button type={submit ? 'submit' : 'button'} className={buttonClassName} disabled={disabled}>
+            {!iconAfter ? iconComponent : null}
+            {finalChildren}
+            {iconAfter ? iconComponent : null}
+          </button>
+        )}
         {disabled && tooltip && showTooltip ? React.cloneElement(tooltip, { ...tooltip.props, target: () => findDOMNode(this) }) : null}
       </div>
     );

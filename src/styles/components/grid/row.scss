@@ -3,4 +3,8 @@ $class: "row";
 .#{$class} {
   display: flex;
   flex-wrap: wrap;
+
+  &.horizontal-align-center {
+    justify-content: center;
+  }
 }

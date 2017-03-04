@@ -18,7 +18,7 @@ const Nav: React.SFC<NavProps> = (props: NavProps): React.ReactElement<NavProps>
         <Link to="/" className={`${namespace()}--list--item--button`}>Menu</Link>
       </li>
       <li className={`${namespace()}--list--item`}>
-        <Link to="/" className={`${namespace()}--list--item--button`}>Hébergement</Link>
+        <Link to="/accommodation" className={`${namespace()}--list--item--button`}>Hébergement</Link>
       </li>
       <li className={`${namespace()}--list--item`}>
         <Link to="/" className={`${namespace()}--list--item--button`}>Île Narvak</Link>

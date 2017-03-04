@@ -1,0 +1,11 @@
+@import "../../colors";
+
+$class: "separator";
+
+.#{$class} {
+  border: none;
+  height: .5px;
+  background: $gold;
+  width: 100%;
+  margin-bottom: 20px;
+}

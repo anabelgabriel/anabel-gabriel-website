@@ -19,6 +19,11 @@ $class: "button";
     display: flex;
     align-items: center;
 
+    &:disabled {
+      background: $gray;
+      opacity: .5;
+    }
+
     &.flat {
       background: transparent;
       color: $gold;
@@ -28,9 +33,18 @@ $class: "button";
     }
 
     &--icon {
-      margin: auto 0px auto 8px;
+      margin: auto 0px;
       padding-top: 0px;
     }
+
+    &--icon + &--text {
+      margin-left: 8px;
+    }
+
+    &--text + &--icon {
+      margin-left: 8px;
+    }
+
     &:disabled &--icon {
       * {
         fill: rgba($gray, .6);

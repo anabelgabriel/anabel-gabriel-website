@@ -28,12 +28,14 @@ const Progress: React.SFC<ProgressProps> = ({ children, nextDisabled }: Progress
   });
   return (
     <div className={namespace()}>
-      <div className={`${namespace()}--placeholder`}/>
+      <div className={`${namespace()}--placeholder`}>
+        <Button flat icon="prev" submit disabled={nextDisabled}>Retour</Button>
+      </div>
       <ul className={`${namespace()}--dots`}>
         {finalChildren}
       </ul>
       <div className={`${namespace()}--placeholder`}>
-        <Button flat icon="next" submit disabled={nextDisabled} tooltip={<Tooltip>Veuillez remplir le formulaire avant de continuer.</Tooltip>}>Continuer</Button>
+        <Button flat icon="next" iconAfter submit disabled={nextDisabled} tooltip={<Tooltip>Veuillez remplir le formulaire avant de continuer.</Tooltip>}>Continuer</Button>
       </div>
     </div>
   );

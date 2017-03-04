@@ -16,4 +16,5 @@ const Icon = (Element: React.ReactType): React.SFC<IconProps> => ({ className, w
 };
 
 export const NextIcon = Icon(require('./images/icons/next.svg'));
+export const PrevIcon = Icon(require('./images/icons/prev.svg'));
 export const CheckMarkIcon = Icon(require('./images/icons/check-mark.svg'));

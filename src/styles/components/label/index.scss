@@ -1,0 +1,11 @@
+@import "../../colors";
+@import "../../fonts";
+
+$class: "label";
+
+.#{$class} {
+  line-height: 18px;
+  color: white;
+  font-size: 17px;
+  font-family: $cormorant-sc;
+}

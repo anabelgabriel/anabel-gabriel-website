@@ -3,8 +3,13 @@ import '../../styles/components/layout/index.scss';
 
 export const namespace = (): string => 'layout';
 
-const Layout: React.SFC<void> = ({ children }): React.ReactElement<void> => (
-  <div className={namespace()}>
+interface Props {
+  children?: React.ReactNode;
+  className?: string;
+}
+
+const Layout: React.SFC<Props> = ({ children, className }: Props): React.ReactElement<Props> => (
+  <div className={namespace() + (className ? ` ${className}` : '')}>
     {children}
   </div>
 );

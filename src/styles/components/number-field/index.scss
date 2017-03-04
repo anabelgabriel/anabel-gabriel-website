@@ -1,0 +1,94 @@
+@import "../../fonts";
+@import "../../colors";
+
+$class: "number-field";
+$height: 40px;
+
+.#{$class} {
+  display: flex;
+  align-items: center;
+
+  &--input {
+    appearance: none;
+    box-sizing: content-box;
+    background: transparent;
+    border: none;
+    width: 50px;
+    padding: 0;
+    border-radius: 0;
+    box-sizing: border-box;
+    height: $height;
+    line-height: $height;
+    outline: none;
+    color: $gold;
+    font-family: $helvetica-neue;
+    font-weight: 300;
+    text-align: center;
+
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px $gold inset;
+      -webkit-text-fill-color: $navy-blue;
+    }
+  }
+
+  &--border {
+    border-bottom: 1px solid rgba(white, .1);
+    position: relative;
+
+    &:after {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "";
+      border-bottom: 1px solid $gold;
+      transform-origin: 100% 50%;
+      transform: scaleX(0);
+      transition: all .2s;
+      will-change: transform;
+    }
+  }
+
+  &--input:focus ~ .#{$class}--border {
+    border-bottom: 1px solid rgba(white, .2);
+
+    &:after {
+      transform: scaleX(1);
+    }
+  }
+
+  &--label {
+    line-height: 18px;
+    color: white;
+    font-size: 17px;
+    font-family: $cormorant-sc;
+    transition: color .2s;
+    margin-right: 12px;
+  }
+
+  &--spin {
+    background: $gold;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+    &.blocked {
+      background: $gray;
+      opacity: .5;
+    }
+
+    svg {
+      width: 8px;
+      height: 8px;
+
+      * {
+        fill: darken($gold, 60%)
+      }
+    }
+  }
+}

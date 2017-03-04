@@ -2,19 +2,22 @@ import * as React from 'react';
 import { TextField, Column, Row, Radio, RadioGroup, Form, FormActions, FormProgress, FormProgressStep } from '../../../components';
 import { i18n } from '../../../utils';
 import Attendee from "../../../stores/Attendee/index";
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 
 interface AttendeeProps {
   lang?: any;
   attendee: Attendee;
+  onSubmit: () => void;
 };
 
 @observer
-class AttendeeComponent extends React.Component<AttendeeProps, void> {
+class AttendeeComponent<P extends AttendeeProps> extends React.Component<AttendeeProps, void> {
   public props: AttendeeProps;
 
   public handleSubmit = () => {
-    console.log(this.props.attendee);
+    if (this.props.attendee.isValid()) {
+      this.props.onSubmit();
+    }
   };
 
   public render() {
