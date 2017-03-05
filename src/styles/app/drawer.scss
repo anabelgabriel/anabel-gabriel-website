@@ -63,23 +63,16 @@ $class: "app--drawer";
                 text-align: center;
               }
 
-              &:hover {
-                background-color: darken($navy-blue, 3%);
-              }
               &:hover &--text {
                 color: white;
                 transform: scale(1.1);
                 text-shadow: 0 0 10px rgba(white, .5), 0 0 5px rgba(white, .5), 0 0 1px $navy-blue;
               }
 
-              &:active {
-                background-color: darken($navy-blue, 5%);
-              }
-
               &:active &--text {
                 color: white;
-                transform: scale(0.8);
-                text-shadow: 0 0 10px rgba(black, .5), 0 0 5px rgba(black, .5), 0 0 1px $navy-blue;
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(white, .5), 0 0 5px rgba(white, .5), 0 0 1px $navy-blue;
               }
             }
           }

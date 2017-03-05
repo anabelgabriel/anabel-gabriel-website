@@ -43,8 +43,8 @@ $class: "app--header--nav";
         }
         &:active {
           color: white;
-          transform: scale(0.8);
-          text-shadow: 0 0 10px rgba(black, .5), 0 0 5px rgba(black, .5), 0 0 1px $navy-blue;
+          transform: scale(1);
+          text-shadow: 0 0 10px rgba(white, .5), 0 0 5px rgba(white, .5), 0 0 1px $navy-blue;
         }
       }
       &:first-child &--button {

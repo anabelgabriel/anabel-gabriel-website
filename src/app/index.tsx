@@ -37,7 +37,11 @@ const App = (stores: Stores): React.ComponentClass<AppProps> => {
       return (
         <Provider {...stores}>
           <div className="app">
-            <div className="app--backdrop"/>
+            <div className="app--backdrop--top"/>
+            <div className="app--backdrop--bottom">
+              <div className="app--backdrop--bottom--stars"/>
+              <div className="app--backdrop--bottom--trees"/>
+            </div>
             <div className="app--content">
               {header}
               {body}

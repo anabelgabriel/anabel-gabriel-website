@@ -68,7 +68,7 @@ class Accommodation extends React.Component<Props, State> {
         </View>
         <LayoutContent>
           <Paragraph>
-            Pour les personnes intéressées, nous séjournerons à l’hôtel de Mortagne.
+            Pour les personnes intéressées, nous séjournerons à l’Hôtel Mortagne.
           </Paragraph>
           <Paragraph>
             Celui-ci est situé à seulement huit minutes de l’île Navark.

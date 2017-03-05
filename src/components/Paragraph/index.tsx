@@ -5,6 +5,7 @@ export const namespace = (): string => 'paragraph';
 
 export interface ParagraphProps {
   children?: React.ReactNode;
+  className?: string;
   align?: 'center';
   font?: 'cormorant' | 'edwardian';
   size?: number;
@@ -15,9 +16,10 @@ export interface ParagraphProps {
 }
 
 const Paragraph: React.SFC<ParagraphProps> = (
-  { children, align, font, size, desktop, tablet, mobile, color }: ParagraphProps
+  { children, align, font, size, desktop, tablet, mobile, color, className: inheritedClassName }: ParagraphProps
 ): React.ReactElement<ParagraphProps> => {
   let className = namespace();
+  if (inheritedClassName) className += ` ${inheritedClassName}`;
   if (align) className += ` align-${align}`;
   if (font) className += ` font-${font}`;
   if (color) className += ` ${color}`;
