@@ -6,18 +6,25 @@ $class: "form--actions";
 .#{$class} {
   height: 64px;
   margin-top: 60px;
-  @include mobile {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin-top: 0;
-    background: rgba($navy-blue, .8);
-    box-shadow: 0 -2px 4px rgba(black, .5);
 
-    &--backdrop {
-      background: transparent;
-      backdrop-filter: blur(10px);
+  @include mobile {
+    margin-top: 0;
+  }
+
+  &--content {
+    height: 64px;
+    @include mobile {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba($navy-blue, .8);
+      box-shadow: 0 -2px 4px rgba(black, .5);
+
+      &--backdrop {
+        background: transparent;
+        backdrop-filter: blur(10px);
+      }
     }
   }
 }

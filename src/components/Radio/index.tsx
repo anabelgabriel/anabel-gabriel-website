@@ -6,6 +6,7 @@ export const namespace = (): string => 'radio';
 export interface RadioProps {
   label: string;
   value: boolean | number | string;
+  marginTop?: number;
 }
 
 type RadioContext = {
@@ -14,12 +15,20 @@ type RadioContext = {
   onChange: (value: boolean | number | string) => void;
 };
 
-const Radio: React.SFC<RadioProps> = ({ label, value }: RadioProps, { name, onChange, selected }: RadioContext): React.ReactElement<RadioProps> => {
+const Radio: React.SFC<RadioProps> = ({ label, value, marginTop }: RadioProps, { name, onChange, selected }: RadioContext): React.ReactElement<RadioProps> => {
   let finalValue: string | number;
   if (typeof value === 'boolean') finalValue = value ? '1' : '0';
   else finalValue = value;
+
+  let className = namespace();
+
+  const style: React.CSSProperties = {};
+  if (marginTop || marginTop === 0) {
+    style.marginTop = `${marginTop}px`;
+    className += ' no-margin-top';
+  }
   return (
-    <label className={namespace()}>
+    <label className={className}>
       <input type="radio" className={`${namespace()}--input`} name={name} onChange={(event) => {
       if (typeof value === 'boolean') {
         onChange(event.target.value == '1' ? true : false);

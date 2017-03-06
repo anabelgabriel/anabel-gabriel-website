@@ -27,8 +27,10 @@ class Actions extends React.Component<ActionsProps, ActionsState> {
     const { children } = this.props;
     const { backdrop } = this.state;
     return (
-      <div className={namespace() + (backdrop ? ` ${namespace()}--backdrop` : '')}>
-        {children}
+      <div className={namespace()}>
+        <div className={`${namespace()}--content` + (backdrop ? ' backdrop' : '')}>
+          {children}
+        </div>
       </div>
     );
   }

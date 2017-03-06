@@ -40,12 +40,15 @@ class Rsvp<P extends void> extends React.Component<Props, State> {
     switch (this.state.step) {
       case 'attendee':
         if (!this.attendee.isAttending) {
+          window.scrollTo(0, 0);
           this.setState({ complete: true });
         } else {
+          window.scrollTo(0, 0);
           this.setState({ step: 'guests' });
         }
         break;
       case 'guests':
+        window.scrollTo(0, 0);
         this.setState({ step: 'menu' });
         break;
     }

@@ -14,3 +14,4 @@ export { default as CheckBox } from './CheckBox';
 export { default as Separator } from './Separator';
 export { default as NumberField } from './NumberField';
 export { default as Label } from './Label';
+export { default as Title } from './Title';

@@ -13,9 +13,6 @@ export interface ComponentProps {
 const Component:React.SFC<any> = ({ attendees }: ComponentProps):React.ReactElement<ComponentProps> => {
   return (
     <Layout>
-      <Paragraph align="center" font="edwardian" size={30} className={`${namespace()}--preload-font`}>
-        Preload font
-      </Paragraph>
       <LayoutContent maxWidth={760} desktop tablet>
         <Paragraph align="center" font="edwardian" size={30}>
           Vous êtes invités au mariage d’Anabel et Gabriel. Lorem ipsum dolor sit amet, consectetur adipiscing elit.

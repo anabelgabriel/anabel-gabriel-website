@@ -5,6 +5,7 @@ import { Provider } from 'mobx-react';
 import { findDOMNode } from 'react-dom';
 import Hammer from 'hammerjs';
 import { Stores } from '../stores';
+import { Paragraph } from '../components';
 
 interface AppProps extends RouteComponentProps<any, any> {
   body?: React.ReactNode;
@@ -46,6 +47,9 @@ const App = (stores: Stores): React.ComponentClass<AppProps> => {
               {header}
               {body}
             </div>
+            <Paragraph align="center" font="edwardian" size={30} className={`app--preload-font`}>
+              Preload font
+            </Paragraph>
           </div>
         </Provider>
       );
