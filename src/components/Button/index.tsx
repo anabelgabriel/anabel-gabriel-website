@@ -16,6 +16,7 @@ export interface ButtonProps {
   disabled?: boolean;
   loading?: boolean;
   to?: string;
+  onClick?: () => void;
 }
 
 interface ButtonState {
@@ -49,7 +50,7 @@ class Button extends React.PureComponent<ButtonProps, ButtonState> {
   };
 
   public render() {
-    const { submit, children, flat, icon, disabled, tooltip, iconAfter, loading, to } = this.props;
+    const { submit, children, flat, icon, disabled, tooltip, iconAfter, loading, to, onClick } = this.props;
     const { showTooltip } = this.state;
     let className = namespace();
     let buttonClassName = `${namespace()}--button`;
@@ -73,7 +74,7 @@ class Button extends React.PureComponent<ButtonProps, ButtonState> {
     let button: React.ReactElement<any>;
     if (to && !to.match(/^[a-zA-Z]*:\/\//)) {
       button = (
-        <Link to={to} className={buttonClassName}>
+        <Link to={to} className={buttonClassName} onClick={onClick}>
           {!iconAfter ? iconComponent : null}
           {finalChildren}
           {iconAfter ? iconComponent : null}
@@ -81,7 +82,7 @@ class Button extends React.PureComponent<ButtonProps, ButtonState> {
       );
     } else if (to) {
       button = (
-        <a href={to} className={buttonClassName} target="_blank">
+        <a href={to} className={buttonClassName} target="_blank" onClick={onClick}>
           {!iconAfter ? iconComponent : null}
           {finalChildren}
           {iconAfter ? iconComponent : null}
@@ -89,7 +90,7 @@ class Button extends React.PureComponent<ButtonProps, ButtonState> {
       );
     } else {
       button = (
-        <button type={submit ? 'submit' : 'button'} className={buttonClassName} disabled={disabled}>
+        <button type={submit ? 'submit' : 'button'} className={buttonClassName} disabled={disabled} onClick={onClick}>
           {!iconAfter ? iconComponent : null}
           {finalChildren}
           {iconAfter ? iconComponent : null}

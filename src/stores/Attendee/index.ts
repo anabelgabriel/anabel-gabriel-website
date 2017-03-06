@@ -1,11 +1,17 @@
 import {observable, action, extendObservable} from "mobx";
 import validate from './validate';
 
+type Guest = {
+  firstName: string;
+  lastName: string;
+};
+
 class Attendee {
   @observable public firstName: string;
   @observable public lastName: string;
   @observable public email: string;
   @observable public isAttending: boolean;
+  @observable public guests: Array<Guest> = [];
 
   constructor(props) {
     extendObservable(this, props);

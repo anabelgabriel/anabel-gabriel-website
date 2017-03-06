@@ -66,7 +66,7 @@ class AttendeeComponent<P extends AttendeeProps> extends React.Component<Attende
           </RadioGroup>
         </Row>
         <FormActions>
-          <FormProgress nextDisabled={!attendee.isValid()}>
+          <FormProgress disableNext={!attendee.isValid()}>
             <FormProgressStep selected/>
             <FormProgressStep/>
             <FormProgressStep/>

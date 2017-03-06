@@ -131,6 +131,7 @@ class Accommodation extends React.Component<Props, State> {
         <TextField
           label="Votre Nom"
           value={name}
+          autoFill="full_name"
           onChange={(value: any) => this.setState({ name: value })}
         />
         <Row horizontalAlign="center">

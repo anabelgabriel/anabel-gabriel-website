@@ -1,9 +1,9 @@
 import {observable, extendObservable} from "mobx";
 
 class Invitation {
-  @observable public firstName: string;
-  @observable public lastName: string;
-  @observable public has_children: string;
+  @observable public name: string;
+  @observable public spouse: string;
+  @observable public hasChildren: string;
 
   constructor(props) {
     extendObservable(this, props);
