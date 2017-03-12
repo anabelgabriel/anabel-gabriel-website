@@ -21,7 +21,7 @@ $class: "form--actions";
       background: rgba($navy-blue, .8);
       box-shadow: 0 -2px 4px rgba(black, .5);
 
-      &--backdrop {
+      &.backdrop {
         background: transparent;
         backdrop-filter: blur(10px);
       }

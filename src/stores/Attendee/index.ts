@@ -1,19 +1,20 @@
-import {observable, action, extendObservable} from "mobx";
+import {observable, action, extendObservable, toJS} from "mobx";
 import validate from './validate';
-
-type Guest = {
-  firstName: string;
-  lastName: string;
-};
+import Menu from './Menu';
+import Guest from './Guest';
+import firebase from 'firebase';
 
 class Attendee {
-  @observable public firstName: string;
-  @observable public lastName: string;
-  @observable public email: string;
-  @observable public isAttending: boolean;
+  @observable public firstName: string = null;
+  @observable public lastName: string = null;
+  @observable public email: string = null;
+  @observable public isAttending: boolean = null;
+  @observable public specialRequests: string = null;
+  @observable public notes: string = null;
+  @observable public menu: Menu = new Menu();
   @observable public guests: Array<Guest> = [];
 
-  constructor(props) {
+  constructor(props = {}) {
     extendObservable(this, props);
   }
 
@@ -28,6 +29,14 @@ class Attendee {
 
   @action validate(): Map<string, boolean | Array<string>> {
     return validate(this);
+  }
+
+  @action toJS() {
+    return toJS(this);
+  }
+
+  @action save() {
+    firebase.database().ref('attendees').push(this.toJS())
   }
 }
 

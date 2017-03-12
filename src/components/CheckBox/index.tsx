@@ -15,7 +15,7 @@ const CheckBox: React.SFC<RadioProps> = ({ label, onChange, selected }: RadioPro
     <label className={namespace()}>
       <input type="checkbox" className={`${namespace()}--input`} onChange={(event) => {
         onChange(event.target.checked);
-      }} checked={selected}/>
+      }} checked={selected ? true : false}/>
       <div className={`${namespace()}--checkbox`}>
         <CheckMark className={`${namespace()}--checkbox--checkmark`}/>
       </div>

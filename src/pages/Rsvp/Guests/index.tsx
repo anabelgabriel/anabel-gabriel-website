@@ -40,7 +40,17 @@ class Guests<P extends Props & { invitations?: Invitations }> extends React.Comp
         this.props.attendee.guests = this.props.attendee.guests.slice(0, nextState.guestsCount - 1);
       } else if (this.props.attendee.guests.length < nextState.guestsCount - 1) {
         for (let i = 0, len = (nextState.guestsCount - 1 - this.props.attendee.guests.length); i < len; ++i) {
-          this.props.attendee.guests.push({ firstName: '', lastName: '' });
+          this.props.attendee.guests.push({
+            firstName: '',
+            lastName: '',
+            menu: {
+              bites: null,
+              diner: null,
+              wine: null,
+              hasAllergies: null,
+              allergies: null,
+            }
+          });
         }
       }
     } else {

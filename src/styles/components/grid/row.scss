@@ -7,4 +7,8 @@ $class: "row";
   &.horizontal-align-center {
     justify-content: center;
   }
+
+  &.layout-vertical {
+    flex-direction: column;
+  }
 }

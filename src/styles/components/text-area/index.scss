@@ -1,0 +1,84 @@
+@import "../../fonts";
+@import "../../colors";
+
+$class: "text-area";
+
+.#{$class} {
+  &--wrapper {
+    margin: 0 0 20px 0;
+    padding: 20px 0 0 0;
+    position: relative;
+    display: block;
+
+    &--input {
+      appearance: none;
+      box-sizing: content-box;
+      background: transparent;
+      border: none;
+      width: 100%;
+      padding: 0;
+      border-radius: 0;
+      box-sizing: border-box;
+      //height: $height;
+      //line-height: $height;
+      outline: none;
+      color: $gold;
+      font-family: $helvetica-neue;
+      font-weight: 300;
+
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px $gold inset;
+        -webkit-text-fill-color: $navy-blue;
+      }
+    }
+
+    &--label {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      display: block;
+      pointer-events: none;
+      font-family: $cormorant-sc;
+      color: white;
+      font-size: 20px;
+      //height: $height;
+      //line-height: $height;
+      transition: all .2s;
+      will-change: transform;
+    }
+
+    &--border {
+      border-bottom: 1px solid rgba(white, .1);
+      position: relative;
+
+      &:after {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        border-bottom: 1px solid $gold;
+        transform-origin: 100% 50%;
+        transform: scaleX(0);
+        transition: all .2s;
+        will-change: transform;
+      }
+    }
+
+    &--input:focus ~ .#{$class}--wrapper--label, .#{$class}--wrapper--label.has-content {
+      transform: translateY(-26px);
+      font-size: 14px;
+      pointer-events: all;
+    }
+
+    &--input:focus ~ .#{$class}--wrapper--border {
+      border-bottom: 1px solid rgba(white, .2);
+
+      &:after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
