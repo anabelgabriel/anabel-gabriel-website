@@ -44,7 +44,7 @@ class Rsvp<P extends void> extends React.Component<Props, State> {
       case 'attendee':
         if (!this.attendee.isAttending) {
           window.scrollTo(0, 0);
-          this.setState({ complete: true });
+          this.onSubmit();
         } else {
           window.scrollTo(0, 0);
           this.setState({ step: 'guests' });
@@ -103,8 +103,9 @@ class Rsvp<P extends void> extends React.Component<Props, State> {
   };
 
   public onSubmit = () => {
+    window.scrollTo(0, 0);
     this.attendee.save();
-    //this.setState({ complete: true });
+    this.setState({ complete: true });
   };
 
   public render() {
@@ -113,12 +114,6 @@ class Rsvp<P extends void> extends React.Component<Props, State> {
     }
 
     let step: React.ReactElement<any>;
-    if (!this.attendee.email) {
-      this.attendee.email = 'gabriel.bull@me.com';
-      this.attendee.firstName = 'Gabriel';
-      this.attendee.lastName = 'Bull';
-      this.attendee.isAttending = true;
-    }
 
     switch (this.state.step) {
       case 'attendee':

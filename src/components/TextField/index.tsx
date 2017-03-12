@@ -48,6 +48,8 @@ class TextField<P extends Props> extends React.Component<Props, State> {
     let finalType: string = type;
     if (type === 'name') finalType = 'text';
 
+    let value = this.isControlled ? this.props.value : this.state.value;
+    if (!value) value = '';
     return (
       <div className={namespace()}>
         <label className={`${namespace()}--wrapper`}>
@@ -55,7 +57,7 @@ class TextField<P extends Props> extends React.Component<Props, State> {
             type={finalType}
             name={autoFill}
             className={`${namespace()}--wrapper--input`}
-            value={this.isControlled ? this.props.value : this.state.value}
+            value={value}
             onChange={(event: React.ChangeEvent<any>) => {
               if (!this.isControlled) this.setState({ value: event.target.value});
               if (onChange) onChange(event.target.value);
