@@ -16,9 +16,9 @@ const Content: React.SFC<Props> = ({ children, maxWidth, desktop, tablet, mobile
   let className = namespace();
   if (desktop || tablet || mobile) {
     className += ' hide-all-except';
-    if (desktop) className += ' desktop';
-    if (tablet) className += ' tablet';
-    if (mobile) className += ' mobile';
+    if (desktop) className += ' show-desktop';
+    if (tablet) className += ' show-tablet';
+    if (mobile) className += ' show-mobile';
   }
 
   const style: React.CSSProperties = {};

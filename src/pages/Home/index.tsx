@@ -1,18 +1,12 @@
 import * as React from 'react';
-import { inject, observer } from 'mobx-react';
-import Attendee from "../../stores/Attendee";
 import { Paragraph, Layout, LayoutContent } from '../../components';
 import '../../styles/pages/home/index.scss';
 
 export const namespace = (): string => 'home';
 
-export interface ComponentProps {
-  attendees?: Array<Attendee>;
-}
-
-const Component:React.SFC<any> = ({ attendees }: ComponentProps):React.ReactElement<ComponentProps> => {
+const Home: React.SFC<void> = (): React.ReactElement<void> => {
   return (
-    <Layout>
+    <Layout marginTop={0}>
       <LayoutContent maxWidth={760} desktop tablet>
         <Paragraph align="center" font="edwardian" size={30}>
           Vous êtes invités au mariage d’Anabel et Gabriel. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -20,10 +14,27 @@ const Component:React.SFC<any> = ({ attendees }: ComponentProps):React.ReactElem
         </Paragraph>
       </LayoutContent>
       <div className={`${namespace()}--images`}>
-        <img src={require('../../images/home/wines@2x.jpg')} className={`${namespace()}--images--image`}/>
+        <div
+          className={`${namespace()}--images--column`}
+          style={{
+            backgroundImage: `url(${require('../../images/home/bar-narvark@2x.jpg')})`
+          }}
+        />
+        <div
+          className={`${namespace()}--images--column`}
+          style={{
+            backgroundImage: `url(${require('../../images/home/wines@2x.jpg')})`
+          }}
+        />
+        <div
+          className={`${namespace()}--images--column`}
+          style={{
+            backgroundImage: `url(${require('../../images/home/saint-laurent@2x.jpg')})`
+          }}
+        />
       </div>
     </Layout>
   );
 }
 
-export default inject('attendees')(observer(Component));
+export default Home;

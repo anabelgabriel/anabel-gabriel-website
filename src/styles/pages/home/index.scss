@@ -4,11 +4,40 @@ $class: "home";
 
 .#{$class} {
   &--images {
-    width: 100%;
-    &--image {
+    width: 100vw;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+
+    &--column {
+      overflow: hidden;
       box-shadow: 0 2px 4px rgba(black, .5);
-      width: 496px;
-      height: 162px;
+      min-width: 300px;
+      background-size: cover;
+      background-position: center center;
+      &:nth-child(1) {
+        flex: 0 1 496px;
+        z-index: 1;
+        height: 110px;
+      }
+      &:nth-child(2) {
+        flex: 0 1 496px;
+        z-index: 2;
+        height: 162px;
+      }
+      &:nth-child(3) {
+        flex: 0 1 496px;
+        z-index: 1;
+        height: 110px;
+      }
+    }
+
+    &--image {
+      //flex: 1;
+      //max-width: 496px;
+      //height: 162px;
+      height: auto;
 
       @include mobile {
         width: 100%;
