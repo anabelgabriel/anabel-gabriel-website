@@ -135,7 +135,8 @@ module.exports = {
   },
 
   plugins: PROD ? [
-      new webpack.NamedModulesPlugin()
+      new webpack.NamedModulesPlugin(),
+      new webpack.optimize.UglifyJsPlugin()
     ] : [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
