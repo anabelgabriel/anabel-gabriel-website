@@ -10,4 +10,8 @@ $class: "title";
   line-height: 1.5;
   font-family: $cormorant-sc;
   color: $gold;
+
+  &.align-center {
+    text-align: center;
+  }
 }

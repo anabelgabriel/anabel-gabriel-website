@@ -23,7 +23,7 @@ module.exports = {
 
   devServer: {
     hot: true,
-    contentBase: path.resolve(__dirname)
+    contentBase: path.resolve(__dirname, 'assets')
   },
 
   resolve: {
