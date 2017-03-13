@@ -5,7 +5,7 @@ var autoprefixer = require('autoprefixer');
 var PROD = !(process.env.NODE_ENV === 'development');
 
 module.exports = {
-  entry: [
+  entry: PROD ? './index.tsx' : [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://192.168.1.158',
     './index.tsx'
@@ -19,7 +19,7 @@ module.exports = {
 
   context: path.resolve(__dirname, 'src'),
 
-  devtool: (!PROD ? 'source-map' : null),
+  devtool: (!PROD ? 'source-map' : false),
 
   devServer: {
     hot: true,
@@ -32,32 +32,48 @@ module.exports = {
 
   module: {
     rules: [
-      {
-        test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            query: {
-              cacheDirectory: true
-            }
-          },
-          {
-            loader: 'awesome-typescript-loader',
-            options: {
-              useBabel: true,
-              useCache: true
-            }
+      ...(PROD ? [
+        {
+          test: /\.tsx?$/,
+          include: /src/,
+          use: 'babel-loader'
+        },
+        {
+          test: /\.tsx?$/,
+          include: /src/,
+          use: {
+            loader: 'ts-loader',
+            query: { silent: true }
           }
-        ]
-      },
+        }
+      ] : [
+        {
+          test: /\.(ts|tsx)$/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: 'babel-loader',
+              query: {
+                cacheDirectory: true
+              }
+            },
+            {
+              loader: 'awesome-typescript-loader',
+              options: {
+                useBabel: true,
+                useCache: true
+              }
+            }
+          ]
+        }
+      ]),
       {
         test: /\.scss|\.css$/,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
-            query: PROD ? null : {
+            query: PROD ? {} : {
               sourceMap: true
             }
           },
@@ -69,7 +85,7 @@ module.exports = {
           },
           {
             loader: 'sass-loader',
-            query: PROD ? null : {
+            query: PROD ? {} : {
               sourceMap: true,
               sourceComments: true
             }
@@ -118,7 +134,9 @@ module.exports = {
     ]
   },
 
-  plugins: [
+  plugins: PROD ? [
+      new webpack.NamedModulesPlugin()
+    ] : [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   ]

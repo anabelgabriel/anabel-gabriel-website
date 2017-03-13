@@ -5,6 +5,7 @@
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --port 3000 --history-api-fallback --colors",
     "reset": "rm -rf .awcache",
+    "build": "webpack",
     "update": "ncu -u -a --packageFile package.json -x react-router",
     "reinstall": "rm -rf node_modules && npm cache clean && yarn install",
     "postupdate": "rm -rf node_modules && npm install && rm -rf yarn.lock && yarn install"
