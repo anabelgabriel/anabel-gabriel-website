@@ -10,6 +10,10 @@ $class: "home";
     justify-content: center;
     align-items: center;
 
+    @include mobile {
+      margin: 30px 0;
+    }
+
     &--column {
       overflow: hidden;
       box-shadow: 0 2px 4px rgba(black, .5);
@@ -20,28 +24,28 @@ $class: "home";
         flex: 0 1 496px;
         z-index: 1;
         height: 110px;
+
+        @include mobile {
+
+        }
       }
       &:nth-child(2) {
         flex: 0 1 496px;
         z-index: 2;
         height: 162px;
+
+        @include mobile {
+          display: none;
+        }
       }
       &:nth-child(3) {
         flex: 0 1 496px;
         z-index: 1;
         height: 110px;
-      }
-    }
 
-    &--image {
-      //flex: 1;
-      //max-width: 496px;
-      //height: 162px;
-      height: auto;
-
-      @include mobile {
-        width: 100%;
-        height: auto;
+        @include mobile {
+          display: none;
+        }
       }
     }
   }

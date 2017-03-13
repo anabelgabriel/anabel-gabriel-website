@@ -2,10 +2,14 @@
 @import "../colors";
 @import "../fonts";
 
+$headerClass: "app--header";
 $class: "app--header--nav";
 
 .#{$class} {
   padding: 54px;
+  @include mobile {
+    padding: 0;
+  }
 
   &--list {
     display: flex;
@@ -34,7 +38,8 @@ $class: "app--header--nav";
         will-change: transform;
 
         @include mobile {
-          padding: 0;
+          padding: 10px 0;
+          text-align: center;
         }
 
         &:hover {
@@ -54,6 +59,14 @@ $class: "app--header--nav";
       &:last-child &--button {
         padding-right: 0;
       }
+    }
+  }
+}
+
+.#{$headerClass} {
+  .#{$class} {
+    @include mobile {
+      display: none;
     }
   }
 }

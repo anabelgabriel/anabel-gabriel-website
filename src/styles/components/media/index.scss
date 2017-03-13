@@ -1,0 +1,22 @@
+@import "../../media";
+
+$class: "media";
+
+.#{$class} {
+  display: none;
+  @include mobile {
+    &.mobile {
+      display: block;
+    }
+  }
+  @include tablet {
+    &.tablet {
+      display: block;
+    }
+  }
+  @include desktop {
+    &.desktop {
+      display: block;
+    }
+  }
+}

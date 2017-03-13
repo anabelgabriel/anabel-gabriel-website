@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Paragraph, Layout, LayoutContent } from '../../components';
+import { Paragraph, Layout, LayoutContent, Media } from '../../components';
 import '../../styles/pages/home/index.scss';
+import Nav from '../../app/Nav';
 
 export const namespace = (): string => 'home';
 
@@ -9,8 +10,8 @@ const Home: React.SFC<void> = (): React.ReactElement<void> => {
     <Layout marginTop={0}>
       <LayoutContent maxWidth={760} desktop tablet>
         <Paragraph align="center" font="edwardian" size={30}>
-          Vous êtes invités au mariage d’Anabel et Gabriel. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Suspendisse ante nunc, commodo et pretium in, pharetra non felis.
+          Vous êtes cordialement invités à venir célébrer le mariage de Anabel et Gabriel. Merci de bien vouloir
+          prendre le temps de visiter toutes les sections du site. Au plaisir de célébrer avec vous.
         </Paragraph>
       </LayoutContent>
       <div className={`${namespace()}--images`}>
@@ -33,6 +34,9 @@ const Home: React.SFC<void> = (): React.ReactElement<void> => {
           }}
         />
       </div>
+      <Media mobile>
+        <Nav/>
+      </Media>
     </Layout>
   );
 }

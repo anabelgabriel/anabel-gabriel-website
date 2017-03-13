@@ -16,3 +16,4 @@ export { default as NumberField } from './NumberField';
 export { default as Label } from './Label';
 export { default as Title } from './Title';
 export { default as TextArea } from './TextArea';
+export { default as Media } from './Media';

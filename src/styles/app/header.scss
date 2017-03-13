@@ -25,6 +25,9 @@ $class: "app--header";
       }
       &.extra-padding {
         padding-top: 76px;
+        @include mobile {
+          padding-top: 0;
+        }
       }
     }
 
