@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Paragraph, Layout, LayoutContent, Media } from '../../components';
+import { Paragraph, Layout, LayoutContent, Media, Row, Button } from '../../components';
 import '../../styles/pages/home/index.scss';
 import Nav from '../../app/Nav';
 
@@ -34,6 +34,11 @@ const Home: React.SFC<void> = (): React.ReactElement<void> => {
           }}
         />
       </div>
+      <Media desktop tablet>
+        <Row horizontalAlign="center" marginTop={40}>
+          <Button to="/rsvp">RSVP</Button>
+        </Row>
+      </Media>
       <Media mobile>
         <Nav/>
       </Media>

@@ -1,0 +1,28 @@
+@import "../../fonts";
+@import "../../colors";
+
+$class: "or";
+
+.#{$class} {
+  display: flex;
+  align-items: center;
+  margin: -.75rem 0 .75rem 0;
+  &--text {
+    color: rgba(white, .9);
+    font-family: $cormorant-sc;
+    line-height: 1.5;
+    flex: 0;
+  }
+  &:after, &:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(white, .3);
+  }
+  &:after {
+    margin-left: 10px;
+  }
+  &:before {
+    margin-right: 10px;
+  }
+}

@@ -63,7 +63,7 @@ class Accommodation extends React.Component<Props, State> {
 
     return (
       <Layout className={namespace()}>
-        <View className={`${namespace()}--photo`}>
+        <View className={`${namespace()}--photo`} marginBottom={20}>
           <Image src={require('../../images/accommodation/hotel.jpg')} className={`${namespace()}--photo--image`}/>
         </View>
         <LayoutContent>
@@ -78,7 +78,7 @@ class Accommodation extends React.Component<Props, State> {
           </Row>
           <Ornament/>
         </LayoutContent>
-        <View className={`${namespace()}--photo`}>
+        <View className={`${namespace()}--photo`} marginBottom={20}>
           <Image src={require('../../images/accommodation/sens.jpg')} className={`${namespace()}--photo--image`}/>
         </View>
         <LayoutContent>

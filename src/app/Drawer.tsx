@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 
 export const namespace = (): string => 'app--drawer';
 
-export type DrawerNavSelected = 'home' | 'rsvp' | 'accommodation';
+export type DrawerNavSelected = 'home' | 'rsvp' | 'accommodation' | 'menu';
 
 interface DrawerProps {
   app?: App;
@@ -64,9 +64,9 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
             <nav className={`${namespace()}--drawer--content--nav`}>
               <ul className={`${namespace()}--drawer--content--nav--list`}>
                 <DrawerItem to="/" selected={selected === 'home'}>Home</DrawerItem>
-                <DrawerItem to="/rsvp" selected={selected === 'home'}>RSVP</DrawerItem>
-                <DrawerItem to="/" selected={false}>Menu</DrawerItem>
+                <DrawerItem to="/rsvp" selected={selected === 'rsvp'}>RSVP</DrawerItem>
                 <DrawerItem to="/accommodation" selected={selected === 'accommodation'}>Hébergement</DrawerItem>
+                <DrawerItem to="/menu" selected={selected === 'menu'}>Menu</DrawerItem>
                 <DrawerItem to="/" selected={false}>Île Narvak</DrawerItem>
                 <DrawerItem to="/" selected={false}>Déroulement</DrawerItem>
                 <DrawerItem to="/" selected={false}>Mémos</DrawerItem>
