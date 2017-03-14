@@ -7,8 +7,10 @@ import Attendee from "../../../stores/Attendee/index";
 import { inject, observer } from 'mobx-react';
 import Invitations from "../../../stores/Invitations/index";
 import Invitation from "../../../stores/Invitations/Invitation";
+import { i18n } from '../../../utils';
 
 interface Props {
+  lang?: any;
   attendee: Attendee;
   onBack: () => void;
   onSubmit: () => void;
@@ -63,18 +65,19 @@ class Guests<P extends Props & { invitations?: Invitations }> extends React.Comp
   };
 
   public render() {
+    const { lang } = this.props;
     const { hasGuests } = this.state;
     const isValid = hasGuests === false ||
       (hasGuests && this.props.attendee.guests[0] && this.props.attendee.guests[0].firstName && this.props.attendee.guests[0].lastName);
     return (
       <Form onSubmit={this.handleSubmit}>
         <Paragraph font="edwardian" size={30}>
-          Bonjour {this.props.attendee.firstName}, veuillez nous indiquer avec qui vous viendrais.
+          {lang.intro.replace('%s', this.props.attendee.firstName)}
         </Paragraph>
         <Row>
           <RadioGroup value={hasGuests} onChange={(value: any) => this.setState({ hasGuests: value })}>
-            <Radio label={'Je serai accompagné'} value={true}/>
-            <Radio label={'Je ne serai pas accompagné'} value={false}/>
+            <Radio label={lang.has_guests} value={true}/>
+            <Radio label={lang.no_guests} value={false}/>
           </RadioGroup>
         </Row>
         {hasGuests ? this.renderPart2() : null}
@@ -91,6 +94,7 @@ class Guests<P extends Props & { invitations?: Invitations }> extends React.Comp
   }
 
   private renderPart2() {
+    const { lang } = this.props;
     const { guestsCount, invitation } = this.state;
     if (invitation && invitation.hasChildren) {
       return (
@@ -98,7 +102,7 @@ class Guests<P extends Props & { invitations?: Invitations }> extends React.Comp
           <Separator/>
           <Row horizontalAlign="center">
             <NumberField
-              label="Nous serons"
+              label={lang.num}
               maximum={6}
               minimum={2}
               value={guestsCount}
@@ -119,13 +123,14 @@ class Guests<P extends Props & { invitations?: Invitations }> extends React.Comp
   }
 
   private renderGuests() {
+    const { lang } = this.props;
     return this.props.attendee.guests.map((guest, index) => {
       return (
         <Row key={index}>
           <Column span={6} mobileSpan={12}>
             <TextField
               type="name"
-              label={'Prénom'}
+              label={lang.first_name}
               autoFill="first_name"
               value={guest.firstName}
               onChange={value => guest.firstName = value as any}
@@ -135,7 +140,7 @@ class Guests<P extends Props & { invitations?: Invitations }> extends React.Comp
           <Column span={6} mobileSpan={12}>
             <TextField
               type="name"
-              label={'Nom'}
+              label={lang.last_name}
               autoFill="last_name"
               value={guest.lastName}
               onChange={value => guest.lastName = value as any}
@@ -148,4 +153,7 @@ class Guests<P extends Props & { invitations?: Invitations }> extends React.Comp
   }
 }
 
-export default Guests;
+export default i18n({
+  en: require( './lang/en.yaml'),
+  fr: require( './lang/fr.yaml'),
+})(Guests);

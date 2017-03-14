@@ -1,0 +1,25 @@
+intro: Please make your choice of menu.
+bites_title: Cocktail bites
+bites:
+  - Salmon tartare with black sesame cone
+  - Fiocchettis with three Provençal cheeses
+starter_title: Starter
+starter:
+  - Vegetable fondant and goat cheese, young spinach shoots
+dinner_title: Main dish
+dinner:
+  - Supreme of chicken with calvados and caramelized apples
+  - Wallet of beef tenderloin with Madeira wine
+  - Udon pasta with vegetables and ginger
+in_between_title: Entremet
+in_between:
+  - Little parmesan fantasy, tangerine vinaigrette
+dessert_title: Dessert
+dessert:
+  - Crusty chocolate languette
+wine_title: Wine
+wine:
+  - White
+  - Red
+allergies_title: I have allergies
+allergies_details: What are your allergies?

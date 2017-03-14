@@ -1,0 +1,6 @@
+intro: Hello %s, please let us know with whom you will come.
+has_guests: I will be accompanied
+no_guests: I will not be accompanied
+num: We will be
+first_name: First name
+last_name: Last name

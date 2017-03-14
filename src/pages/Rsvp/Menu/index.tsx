@@ -6,8 +6,10 @@ import {
 import { default as Attendee } from "../../../stores/Attendee/index";
 import { default as Guest } from "../../../stores/Attendee/Guest";
 import { observer } from 'mobx-react';
+import { i18n } from '../../../utils';
 
 interface Props {
+  lang?: any;
   attendee: Attendee;
   guest: Guest;
   guestNum: number;
@@ -41,11 +43,12 @@ class Menu<P extends Props> extends React.Component<P, State> {
   };
 
   public render() {
+    const { lang } = this.props;
     const valid = this.props.guest.menu.bites && this.props.guest.menu.dinner && this.props.guest.menu.wine;
     return (
       <Form onSubmit={this.handleSubmit}>
         <Paragraph font="edwardian" size={30}>
-          Veuillez faire votre choix de menu.
+          {lang.intro}
         </Paragraph>
         {this.renderGuest(this.props.guest)}
         <FormActions>
@@ -64,12 +67,13 @@ class Menu<P extends Props> extends React.Component<P, State> {
   }
 
   private renderGuest(guest: Guest) {
+    const { lang } = this.props;
     return (
       <View>
         <Title>{guest.firstName}</Title>
         <Row marginBottom={16}>
           <Column span={4}>
-            <Label>Bouchée cocktail</Label>
+            <Label>{lang.bites_title}</Label>
           </Column>
           <Column span={8}>
             <RadioGroup
@@ -78,11 +82,11 @@ class Menu<P extends Props> extends React.Component<P, State> {
             >
               <Radio
                 marginTop={0}
-                label={'Tartare de saumon à la lime sur cône au sésame noir'}
+                label={lang.bites[0]}
                 value={'salmon'}
               />
               <Radio
-                label={'Fiochettis aux trois fromages à la provençale'}
+                label={lang.bites[1]}
                 value={'cheese'}
               />
             </RadioGroup>
@@ -90,17 +94,17 @@ class Menu<P extends Props> extends React.Component<P, State> {
         </Row>
         <Row marginBottom={16}>
           <Column span={4}>
-            <Label>Entrée</Label>
+            <Label>{lang.starter_title}</Label>
           </Column>
           <Column span={8}>
             <Paragraph font="cormorant" size={17}>
-              Fondant de légumes et fromage de chèvre, jeunes pousses d’épinards
+              {lang.starter[0]}
             </Paragraph>
           </Column>
         </Row>
         <Row marginBottom={16}>
           <Column span={4}>
-            <Label>Plats<br/>principaux</Label>
+            <Label>{lang.dinner_title}</Label>
           </Column>
           <Column span={8}>
             <RadioGroup
@@ -109,15 +113,15 @@ class Menu<P extends Props> extends React.Component<P, State> {
             >
               <Radio
                 marginTop={0}
-                label={'Suprême de volaille au calvados et pommes caramélisées'}
+                label={lang.dinner[0]}
                 value={'chicken'}
               />
               <Radio
-                label={'Portefeuille filet de boeuf forestier au vin de Madère'}
+                label={lang.dinner[1]}
                 value={'beef'}
               />
               <Radio
-                label={'Sauté de pâte Udon aux légumes et gingembre'}
+                label={lang.dinner[2]}
                 value={'veggies'}
               />
             </RadioGroup>
@@ -125,28 +129,28 @@ class Menu<P extends Props> extends React.Component<P, State> {
         </Row>
         <Row marginBottom={16}>
           <Column span={4}>
-            <Label>Entremet</Label>
+            <Label>{lang.in_between_title}</Label>
           </Column>
           <Column span={8}>
             <Paragraph font="cormorant" size={17}>
-              Petite fantaisie au parmesan, vinaigrette tangerine
+              {lang.in_between[0]}
             </Paragraph>
           </Column>
         </Row>
         <Row marginBottom={16}>
           <Column span={4}>
-            <Label>Dessert</Label>
+            <Label>{lang.dessert_title}</Label>
           </Column>
           <Column span={8}>
             <Paragraph font="cormorant" size={17}>
-              Languette croustillante au chocolat
+              {lang.dessert[0]}
             </Paragraph>
           </Column>
         </Row>
 
         <Row marginBottom={16}>
           <Column span={4}>
-            <Label>Vin</Label>
+            <Label>{lang.wine_title}</Label>
           </Column>
           <Column span={8}>
             <RadioGroup
@@ -155,11 +159,11 @@ class Menu<P extends Props> extends React.Component<P, State> {
             >
               <Radio
                 marginTop={0}
-                label={'Blanc'}
+                label={lang.wine[0]}
                 value={'white'}
               />
               <Radio
-                label={'Rouge'}
+                label={lang.wine[1]}
                 value={'red'}
               />
             </RadioGroup>
@@ -167,13 +171,13 @@ class Menu<P extends Props> extends React.Component<P, State> {
         </Row>
         <Row marginBottom={16} layout="vertical">
           <CheckBox
-            label="J'ai des allergies"
+            label={lang.allergies_title}
             onChange={(value: any) => guest.menu.hasAllergies = value }
             selected={guest.menu.hasAllergies}
           />
           {guest.menu.hasAllergies ? (
               <TextArea
-                label="Quelles sont vos allergies?"
+                label={lang.allergies_details}
                 value={guest.menu.allergies}
                 onChange={(value) => guest.menu.allergies = value }
               />
@@ -184,4 +188,7 @@ class Menu<P extends Props> extends React.Component<P, State> {
   }
 }
 
-export default Menu;
+export default i18n({
+  en: require( './lang/en.yaml'),
+  fr: require( './lang/fr.yaml'),
+})(Menu);

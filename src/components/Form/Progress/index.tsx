@@ -3,16 +3,18 @@ import Button from '../../Button';
 import Tooltip from '../../Tooltip';
 import '../../../styles/components/form/progress/index.scss';
 import { StepProps } from './Step';
+import { i18n } from '../../../utils';
 
 export const namespace = (): string => 'form--progress';
 
 export interface ProgressProps {
+  lang?: any;
   children?: React.ReactNode;
   disableNext?: boolean;
   onBack?: () => void;
 }
 
-const Progress: React.SFC<ProgressProps> = ({ children, disableNext, onBack }: ProgressProps): React.ReactElement<ProgressProps> => {
+const Progress: React.SFC<ProgressProps> = ({ children, disableNext, onBack, lang }: ProgressProps): React.ReactElement<ProgressProps> => {
   let steps: number = 0;
   const finalChildren = [];
   let hasSelected = false;
@@ -34,17 +36,21 @@ const Progress: React.SFC<ProgressProps> = ({ children, disableNext, onBack }: P
   return (
     <div className={namespace()}>
       <div className={`${namespace()}--placeholder`}>
-        {currentStep !== 1 ? <Button flat icon="prev" onClick={onBack}>Retour</Button> : null}
+        {currentStep !== 1 ? <Button flat icon="prev" onClick={onBack}>{lang.back}</Button> : null}
       </div>
       <ul className={`${namespace()}--dots`}>
         {finalChildren}
       </ul>
       <div className={`${namespace()}--placeholder`}>
-        <Button flat icon="next" iconAfter submit disabled={disableNext} tooltip={<Tooltip>Veuillez remplir le formulaire avant de continuer.</Tooltip>}>Continuer</Button>
+        <Button flat icon="next" iconAfter submit disabled={disableNext} tooltip={<Tooltip>{lang.complete}</Tooltip>}>{lang.next}</Button>
       </div>
     </div>
   );
 }
 
-export default Progress;
+
+export default i18n({
+  en: require( './lang/en.yaml'),
+  fr: require( './lang/fr.yaml'),
+})(Progress);
 export { default as ProgressStep } from './Step';

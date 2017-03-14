@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { Layout, LayoutContent, Paragraph, View, Button, Row } from '../../../components';
 import Attendee from "../../../stores/Attendee/index";
+import { i18n } from '../../../utils';
 
 interface Props {
+  lang?: any;
   attendee: Attendee;
 }
 
@@ -10,26 +12,25 @@ class Complete extends React.Component<Props, void> {
   public props: Props;
 
   public render() {
-    const { attendee } = this.props;
+    const { attendee, lang } = this.props;
     return (
       <Layout>
         <LayoutContent>
           {attendee.isAttending ? (
             <View>
               <Paragraph font="edwardian" size={40} align="center">
-                Nous avons très hâte de vous voir!
+                {lang.success}
               </Paragraph>
               <Paragraph size={16} align="center">
-                Pour plus d'information sur l'hébergement et pour nous mentioner si vous allez être présent, visitez
-                la section hébergement.
+                {lang.accommodation_info}
               </Paragraph>
               <Row horizontalAlign="center">
-                <Button to="/accommodation">Hébergement</Button>
+                <Button to="/accommodation">{lang.accommodation}</Button>
               </Row>
             </View>
           ) : (
             <Paragraph font="edwardian" size={40} align="center">
-              Nous sommes désolée de ne pas vous avoir parmis nous. Nous espérons vous revoir bientôt!
+              {lang.sorry}
             </Paragraph>
           )}
         </LayoutContent>
@@ -38,4 +39,7 @@ class Complete extends React.Component<Props, void> {
   }
 }
 
-export default Complete;
+export default i18n({
+  en: require( './lang/en.yaml'),
+  fr: require( './lang/fr.yaml'),
+})(Complete);

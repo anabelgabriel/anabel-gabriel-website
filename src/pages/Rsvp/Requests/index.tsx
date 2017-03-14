@@ -2,8 +2,10 @@ import * as React from 'react';
 import { Form, FormActions, FormProgress, FormProgressStep, Paragraph, TextArea } from '../../../components';
 import Attendee from "../../../stores/Attendee/index";
 import { observer } from 'mobx-react';
+import { i18n } from '../../../utils';
 
 interface Props {
+  lang?: any;
   attendee: Attendee;
   onSubmit: () => void;
   onBack: () => void;
@@ -18,19 +20,19 @@ class Requests<P extends Props> extends React.Component<Props, void> {
   };
 
   public render() {
-    const { attendee, onBack } = this.props;
+    const { lang, attendee, onBack } = this.props;
     return (
       <Form onSubmit={this.handleSubmit}>
         <Paragraph font="edwardian" size={30}>
-          Dites-nous quelle chanson il vous ferait plaisir d'entendre le soir de notre mariage.
+          {lang.intro}
         </Paragraph>
         <TextArea
-          label="Demandes spéciale musicale"
+          label={lang.music}
           value={attendee.specialRequests}
           onChange={(value) => attendee.specialRequests = value }
         />
         <TextArea
-          label="Autres demandes ou notes"
+          label={lang.other}
           value={attendee.notes}
           onChange={(value) => attendee.notes = value }
         />
@@ -50,4 +52,7 @@ class Requests<P extends Props> extends React.Component<Props, void> {
   }
 }
 
-export default Requests;
+export default i18n({
+  en: require( './lang/en.yaml'),
+  fr: require( './lang/fr.yaml'),
+})(Requests);
