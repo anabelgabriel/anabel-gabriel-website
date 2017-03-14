@@ -21,7 +21,6 @@ class NumberField extends React.Component<Props, void> {
 
   public handleMouseDownOnDown = () => {
     this.clearInterval();
-    this.decrement();
     this.timeout = setTimeout(() => {
       this.interval = setInterval(this.decrement, 75);
     }, 350);
@@ -29,7 +28,6 @@ class NumberField extends React.Component<Props, void> {
 
   public handleMouseDownOnUp = () => {
     this.clearInterval();
-    this.increment();
     this.timeout = setTimeout(() => {
       this.interval = setInterval(this.increment, 75);
     }, 350);
@@ -65,6 +63,7 @@ class NumberField extends React.Component<Props, void> {
         {label ? <span className={`${namespace()}--label`}>{label}</span> : null}
         <a
           className={`${namespace()}--spin down` + (value <= minimum ? ' blocked' : '')}
+          onClick={this.decrement}
           onMouseDown={this.handleMouseDownOnDown}
           onMouseUp={this.clearInterval}
         >
@@ -84,6 +83,7 @@ class NumberField extends React.Component<Props, void> {
         </label>
         <a
           className={`${namespace()}--spin up` + (value >= maximum ? ' blocked' : '')}
+          onClick={this.increment}
           onMouseDown={this.handleMouseDownOnUp}
           onMouseUp={this.clearInterval}
         >

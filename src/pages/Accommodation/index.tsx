@@ -5,10 +5,12 @@ import {
   Form, View
 } from '../../components';
 import { create } from '../../stores/Accomodation';
+import { i18n } from '../../utils';
 
 const namespace = (): string => 'accommodation';
 
 interface Props {
+  lang?: any;
 }
 
 interface State {
@@ -59,6 +61,7 @@ class Accommodation extends React.Component<Props, State> {
   };
 
   public render() {
+    const { lang } = this.props;
     const { success, error } = this.state;
 
     return (
@@ -68,13 +71,13 @@ class Accommodation extends React.Component<Props, State> {
         </View>
         <LayoutContent>
           <Paragraph>
-            Pour les personnes intéressées, nous séjournerons à l’Hôtel Mortagne.
+            {lang.p1}
           </Paragraph>
           <Paragraph>
-            Celui-ci est situé à seulement huit minutes de l’île Navark.
+            {lang.p2}
           </Paragraph>
           <Row horizontalAlign="center">
-            <Button to="http://www.hotelmortagne.com/">Réserver</Button>
+            <Button to="http://www.hotelmortagne.com/">{lang.book}</Button>
           </Row>
           <Ornament/>
         </LayoutContent>
@@ -83,16 +86,14 @@ class Accommodation extends React.Component<Props, State> {
         </View>
         <LayoutContent>
           <Paragraph>
-            Pour ceux qui seront présents à l’hôtel, nous ferons un souper le vendredi 7 juillet, ainsi qu’un brunch
-            le dimanche 9 juillet.
+            {lang.p3}
           </Paragraph>
           <Paragraph>
-            Merci de nous confirmer votre présence, afin que nous puissions faire la réservation
-            au restaurant « Sens ».
+            {lang.p4}
           </Paragraph>
           <Ornament/>
           {success ? (
-              <Paragraph size={30} font="edwardian" align="center">Au plaisir de vous avoir avec nous!</Paragraph>
+              <Paragraph size={30} font="edwardian" align="center">{lang.success}</Paragraph>
             ) : null}
           {error ? (
               <Paragraph align="center" color="red">{"Une erreure c'est produite 😟"}</Paragraph>
@@ -104,39 +105,40 @@ class Accommodation extends React.Component<Props, State> {
   }
 
   private renderForm() {
+    const { lang } = this.props;
     const { attendDiner, attendBrunch, attendeesCount, bookHotel, name, loading } = this.state;
     const submitEnabled = ((attendBrunch || attendDiner || bookHotel) && name) ? true : false;
     return (
       <Form onSubmit={this.handleSubmit}>
         <CheckBox
-          label="Nous aurons réservé une chambre"
+          label={lang.booked_room}
           onChange={(value) => this.setState({ bookHotel: value })}
           selected={bookHotel}
         />
         <Separator/>
         <Label>
-          Nous serons présent au:
+          {lang.will_be_attending}
         </Label>
         <CheckBox
-          label="Souper du vendredi"
+          label={lang.dinner}
           onChange={(value) => this.setState({ attendDiner: value })}
           selected={attendDiner}
         />
         <CheckBox
-          label="Brunch du dimanche"
+          label={lang.brunch}
           onChange={(value) => this.setState({ attendBrunch: value })}
           selected={attendBrunch}
         />
         <Separator/>
         <TextField
-          label="Votre Nom"
+          label={lang.name}
           value={name}
           autoFill="full_name"
           onChange={(value: any) => this.setState({ name: value })}
         />
         <Row horizontalAlign="center">
           <NumberField
-            label="Nous serons"
+            label={lang.num}
             maximum={6}
             minimum={1}
             value={attendeesCount}
@@ -144,11 +146,14 @@ class Accommodation extends React.Component<Props, State> {
           />
         </Row>
         <Row horizontalAlign="center" marginTop={20}>
-          <Button submit loading={loading} disabled={!submitEnabled}>Réserver</Button>
+          <Button submit loading={loading} disabled={!submitEnabled}>{lang.book}</Button>
         </Row>
       </Form>
     );
   }
 }
 
-export default Accommodation;
+export default i18n({
+  en: require( './lang/en.yaml'),
+  fr: require( './lang/fr.yaml'),
+})(Accommodation);

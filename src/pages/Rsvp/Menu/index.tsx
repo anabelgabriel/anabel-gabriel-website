@@ -17,7 +17,7 @@ interface Props {
 
 interface State {
   bites: 'salmon' | 'cheese';
-  diner: 'chicken' | 'beef' | 'veggies';
+  dinner: 'chicken' | 'beef' | 'veggies';
   wine: 'white' | 'red';
   hasAllergies: boolean;
   allergies: string;
@@ -28,20 +28,20 @@ class Menu<P extends Props> extends React.Component<P, State> {
   public props: P;
   public state: State = {
     bites: null,
-    diner: null,
+    dinner: null,
     wine: null,
     hasAllergies: null,
     allergies: null
   };
 
   public handleSubmit = () => {
-    if (this.props.guest.menu.bites && this.props.guest.menu.diner && this.props.guest.menu.wine) {
+    if (this.props.guest.menu.bites && this.props.guest.menu.dinner && this.props.guest.menu.wine) {
       this.props.onSubmit();
     }
   };
 
   public render() {
-    const valid = this.props.guest.menu.bites && this.props.guest.menu.diner && this.props.guest.menu.wine;
+    const valid = this.props.guest.menu.bites && this.props.guest.menu.dinner && this.props.guest.menu.wine;
     return (
       <Form onSubmit={this.handleSubmit}>
         <Paragraph font="edwardian" size={30}>
@@ -104,8 +104,8 @@ class Menu<P extends Props> extends React.Component<P, State> {
           </Column>
           <Column span={8}>
             <RadioGroup
-              value={guest.menu.diner}
-              onChange={(value: any) => guest.menu.diner = value }
+              value={guest.menu.dinner}
+              onChange={(value: any) => guest.menu.dinner = value }
             >
               <Radio
                 marginTop={0}

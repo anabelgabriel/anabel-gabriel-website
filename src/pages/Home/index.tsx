@@ -2,16 +2,16 @@ import * as React from 'react';
 import { Paragraph, Layout, LayoutContent, Media, Row, Button } from '../../components';
 import '../../styles/pages/home/index.scss';
 import Nav from '../../app/Nav';
+import { i18n } from '../../utils';
 
 export const namespace = (): string => 'home';
 
-const Home: React.SFC<void> = (): React.ReactElement<void> => {
+const Home: React.SFC<void> = ({ lang }: any): React.ReactElement<void> => {
   return (
     <Layout marginTop={0}>
       <LayoutContent maxWidth={760} desktop tablet>
         <Paragraph align="center" font="edwardian" size={30}>
-          Vous êtes cordialement invités à venir célébrer le mariage de Anabel et Gabriel. Merci de bien vouloir
-          prendre le temps de visiter toutes les sections du site. Au plaisir de célébrer avec vous.
+          {lang.intro}
         </Paragraph>
       </LayoutContent>
       <div className={`${namespace()}--images`}>
@@ -36,7 +36,7 @@ const Home: React.SFC<void> = (): React.ReactElement<void> => {
       </div>
       <Media desktop tablet>
         <Row horizontalAlign="center" marginTop={40}>
-          <Button to="/rsvp">RSVP</Button>
+          <Button to="/rsvp">{lang.rsvp}</Button>
         </Row>
       </Media>
       <Media mobile>
@@ -46,4 +46,7 @@ const Home: React.SFC<void> = (): React.ReactElement<void> => {
   );
 }
 
-export default Home;
+export default i18n({
+  en: require( './lang/en.yaml'),
+  fr: require( './lang/fr.yaml'),
+})(Home);

@@ -45,7 +45,7 @@ class Guests<P extends Props & { invitations?: Invitations }> extends React.Comp
             lastName: '',
             menu: {
               bites: null,
-              diner: null,
+              dinner: null,
               wine: null,
               hasAllergies: null,
               allergies: null,

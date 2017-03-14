@@ -4,12 +4,14 @@ import { observer, inject } from 'mobx-react';
 import App from "../stores/App/index";
 import { isSafari } from "../utils";
 import { Link } from 'react-router';
+import { i18n } from '../utils';
 
 export const namespace = (): string => 'app--drawer';
 
 export type DrawerNavSelected = 'home' | 'rsvp' | 'accommodation' | 'menu' | 'narvark' | 'unfolding';
 
 interface DrawerProps {
+  lang?: any;
   app?: App;
   selected: DrawerNavSelected;
 }
@@ -51,7 +53,7 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
   }
 
   public render() {
-    const { app, selected } = this.props;
+    const { app, selected, lang } = this.props;
     const { wasOpen } = this.state;
     return (
       <div className={namespace() + (app.drawerOpen ? ' open' : (wasOpen ? ' close' : ''))}>
@@ -63,13 +65,13 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
             </div>
             <nav className={`${namespace()}--drawer--content--nav`}>
               <ul className={`${namespace()}--drawer--content--nav--list`}>
-                <DrawerItem to="/" selected={selected === 'home'}>Home</DrawerItem>
-                <DrawerItem to="/rsvp" selected={selected === 'rsvp'}>RSVP</DrawerItem>
-                <DrawerItem to="/accommodation" selected={selected === 'accommodation'}>Hébergement</DrawerItem>
-                <DrawerItem to="/menu" selected={selected === 'menu'}>Menu</DrawerItem>
-                <DrawerItem to="/narvark" selected={selected === 'narvark'}>Île Narvak</DrawerItem>
-                <DrawerItem to="/unfolding" selected={selected === 'unfolding'}>Déroulement</DrawerItem>
-                <DrawerItem to="/" selected={false}>Mémos</DrawerItem>
+                <DrawerItem to="/" selected={selected === 'home'}>{lang.home}</DrawerItem>
+                <DrawerItem to="/rsvp" selected={selected === 'rsvp'}>{lang.rsvp}</DrawerItem>
+                <DrawerItem to="/accommodation" selected={selected === 'accommodation'}>{lang.accommodation}</DrawerItem>
+                <DrawerItem to="/menu" selected={selected === 'menu'}>{lang.menu}</DrawerItem>
+                <DrawerItem to="/narvark" selected={selected === 'narvark'}>{lang.narvark}</DrawerItem>
+                <DrawerItem to="/unfolding" selected={selected === 'unfolding'}>{lang.unfolding}</DrawerItem>
+                <DrawerItem to="/" selected={false}>{lang.memos}</DrawerItem>
               </ul>
             </nav>
             <div className={`${namespace()}--drawer--content--flowers-bottom`}>
@@ -83,4 +85,7 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
   }
 }
 
-export default Drawer;
+export default i18n({
+  en: require( './lang/en/nav.yaml'),
+  fr: require( './lang/fr/nav.yaml'),
+})(Drawer);
