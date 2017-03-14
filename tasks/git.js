@@ -4,15 +4,17 @@ const prompt = require("gulp-prompt");
 
 let message;
 
-gulp.task('git:clone', function(){
-  return git.clone('git@github.com:gabrielbull/anabel-gabriel-website.git', {args: './build'}, function (err) {
+gulp.task('git:clone', function(cb) {
+  return git.clone('git@github.com:anabelgabriel/anabel-gabriel-website.git', {args: './build'}, function (err) {
     if (err) throw err;
+    cb();
   });
 });
 
-gulp.task('git:branch', function(){
-  return git.checkout('gh-pages', { args:'-b', cwd: './build/' }, function (err) {
+gulp.task('git:branch', function(cb) {
+  return git.checkout('gh-pages', { cwd: './build/' }, function (err) {
     if (err) throw err;
+    cb();
   });
 });
 
@@ -32,4 +34,10 @@ gulp.task('git:add', function(){
 gulp.task('git:commit', function(){
   return gulp.src('./build')
     .pipe(git.commit(message, { cwd: './build/' }));
+});
+
+gulp.task('git:push', function() {
+  return git.push('origin', 'gh-pages', { cwd: './build/' }, function (err) {
+    if (err) throw err;
+  })
 });
