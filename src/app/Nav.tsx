@@ -29,7 +29,7 @@ const Nav: React.SFC<NavProps> = ({ lang }: NavProps): React.ReactElement<NavPro
         <Link to="/unfolding" className={`${namespace()}--list--item--button`}>{lang.unfolding}</Link>
       </li>
       <li className={`${namespace()}--list--item`}>
-        <Link to="/" className={`${namespace()}--list--item--button`}>{lang.memos}</Link>
+        <Link to="/memos" className={`${namespace()}--list--item--button`}>{lang.memos}</Link>
       </li>
     </ul>
   </nav>
