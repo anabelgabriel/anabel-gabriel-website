@@ -61,6 +61,8 @@ $grid-columns: 12;
   }
 
   &.layout-vertical {
+    flex-direction: column;
+
     &.vertical-align-center {
       justify-content: center;
     }

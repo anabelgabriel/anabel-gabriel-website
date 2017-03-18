@@ -1,40 +1,24 @@
 import * as React from 'react';
 import { Paragraph, Layout, LayoutContent, Column, Row, Label, Or, Ornament } from '../../components';
+import { i18n } from '../../utils';
 
-interface Props {
-}
-
-const Menu: React.SFC<Props> = (props: Props): React.ReactElement<Props> => (
+const Menu: React.SFC<void> = ({ lang }: any): React.ReactElement<void> => (
   <Layout>
     <LayoutContent>
+      <Paragraph font="edwardian" size={30} align="center">
+        {lang.info}
+      </Paragraph>
       <Row marginBottom={16}>
         <Column span={4}>
-          <Label lineHeight={1.5}>Bouchée cocktail</Label>
+          <Label lineHeight={1.5}>{lang.bites_title}</Label>
         </Column>
-        <Column span={8}>
+        <Column span={8} layout="vertical">
           <Paragraph font="cormorant" size={17}>
-            Tartare de saumon à la lime sur cône au sésame noir
+            {lang.bites[0]}
           </Paragraph>
-          <Or>ou</Or>
+          <Or>{lang.or}</Or>
           <Paragraph font="cormorant" size={17}>
-            Fiochettis aux trois fromages à la provençale
-          </Paragraph>
-        </Column>
-      </Row>
-      <Row marginBottom={16}>
-        <Column span={4}>
-        </Column>
-        <Column span={8}>
-          <Ornament/>
-        </Column>
-      </Row>
-      <Row marginBottom={16}>
-        <Column span={4}>
-          <Label lineHeight={1.5}>Entrée</Label>
-        </Column>
-        <Column span={8}>
-          <Paragraph font="cormorant" size={17}>
-            Fondant de légumes et fromage de chèvre, jeunes pousses d’épinards
+            {lang.bites[1]}
           </Paragraph>
         </Column>
       </Row>
@@ -47,19 +31,11 @@ const Menu: React.SFC<Props> = (props: Props): React.ReactElement<Props> => (
       </Row>
       <Row marginBottom={16}>
         <Column span={4}>
-          <Label lineHeight={1.5}>Plats principaux</Label>
+          <Label lineHeight={1.5}>{lang.starter_title}</Label>
         </Column>
         <Column span={8}>
           <Paragraph font="cormorant" size={17}>
-            Suprême de volaille au calvados et pommes caramélisées
-          </Paragraph>
-          <Or>ou</Or>
-          <Paragraph font="cormorant" size={17}>
-            Portefeuille filet de boeuf forestier au vin de Madère
-          </Paragraph>
-          <Or>ou</Or>
-          <Paragraph font="cormorant" size={17}>
-            Sauté de pâte Udon aux légumes et gingembre
+            {lang.starter[0]}
           </Paragraph>
         </Column>
       </Row>
@@ -72,11 +48,19 @@ const Menu: React.SFC<Props> = (props: Props): React.ReactElement<Props> => (
       </Row>
       <Row marginBottom={16}>
         <Column span={4}>
-          <Label lineHeight={1.5}>Entremet</Label>
+          <Label lineHeight={1.5}>{lang.dinner_title}</Label>
         </Column>
-        <Column span={8}>
+        <Column span={8} layout="vertical">
           <Paragraph font="cormorant" size={17}>
-            Petite fantaisie au parmesan, vinaigrette tangerine
+            {lang.dinner[0]}
+          </Paragraph>
+          <Or>{lang.or}</Or>
+          <Paragraph font="cormorant" size={17}>
+            {lang.dinner[1]}
+          </Paragraph>
+          <Or>{lang.or}</Or>
+          <Paragraph font="cormorant" size={17}>
+            {lang.dinner[2]}
           </Paragraph>
         </Column>
       </Row>
@@ -89,11 +73,28 @@ const Menu: React.SFC<Props> = (props: Props): React.ReactElement<Props> => (
       </Row>
       <Row marginBottom={16}>
         <Column span={4}>
-          <Label lineHeight={1.5}>Dessert</Label>
+          <Label lineHeight={1.5}>{lang.in_between_title}</Label>
         </Column>
         <Column span={8}>
           <Paragraph font="cormorant" size={17}>
-            Languette croustillante au chocolat
+            {lang.in_between[0]}
+          </Paragraph>
+        </Column>
+      </Row>
+      <Row marginBottom={16}>
+        <Column span={4}>
+        </Column>
+        <Column span={8}>
+          <Ornament/>
+        </Column>
+      </Row>
+      <Row marginBottom={16}>
+        <Column span={4}>
+          <Label lineHeight={1.5}>{lang.dessert_title}</Label>
+        </Column>
+        <Column span={8}>
+          <Paragraph font="cormorant" size={17}>
+            {lang.dessert[0]}
           </Paragraph>
         </Column>
       </Row>
@@ -101,4 +102,7 @@ const Menu: React.SFC<Props> = (props: Props): React.ReactElement<Props> => (
   </Layout>
 );
 
-export default Menu;
+export default i18n({
+  en: require( './lang/en.yaml'),
+  fr: require( './lang/fr.yaml'),
+})(Menu);

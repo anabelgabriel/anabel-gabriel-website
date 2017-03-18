@@ -8,7 +8,7 @@ import { i18n } from '../utils';
 
 export const namespace = (): string => 'app--drawer';
 
-export type DrawerNavSelected = 'home' | 'rsvp' | 'accommodation' | 'menu' | 'narvark' | 'unfolding';
+export type DrawerNavSelected = 'home' | 'rsvp' | 'accommodation' | 'menu' | 'navark' | 'unfolding';
 
 interface DrawerProps {
   lang?: any;
@@ -69,7 +69,7 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
                 <DrawerItem to="/rsvp" selected={selected === 'rsvp'}>{lang.rsvp}</DrawerItem>
                 <DrawerItem to="/accommodation" selected={selected === 'accommodation'}>{lang.accommodation}</DrawerItem>
                 <DrawerItem to="/menu" selected={selected === 'menu'}>{lang.menu}</DrawerItem>
-                <DrawerItem to="/narvark" selected={selected === 'narvark'}>{lang.narvark}</DrawerItem>
+                <DrawerItem to="/navark" selected={selected === 'navark'}>{lang.navark}</DrawerItem>
                 <DrawerItem to="/unfolding" selected={selected === 'unfolding'}>{lang.unfolding}</DrawerItem>
                 <DrawerItem to="/" selected={false}>{lang.memos}</DrawerItem>
               </ul>

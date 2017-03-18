@@ -18,7 +18,7 @@ const Home: React.SFC<void> = ({ lang }: any): React.ReactElement<void> => {
         <div
           className={`${namespace()}--images--column`}
           style={{
-            backgroundImage: `url(${require('../../images/home/bar-narvark@2x.jpg')})`
+            backgroundImage: `url(${require('../../images/home/bar-navark@2x.jpg')})`
           }}
         />
         <div

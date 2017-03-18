@@ -1,0 +1,22 @@
+info: Menu gastronomique cinq services, vin à volonté pendant le repas
+
+or: ou
+
+bites_title: Bouchée cocktail
+bites:
+  - Tartare de saumon à la lime sur cône au sésame noir
+  - Fiochettis aux trois fromages à la provençale
+starter_title: Entrée
+starter:
+  - Fondant de légumes et fromage de chèvre, jeunes pousses d’épinards
+dinner_title: Plats principaux
+dinner:
+  - Suprême de volaille au calvados et pommes caramélisées
+  - Portefeuille filet de boeuf forestier au vin de Madère
+  - Sauté de pâte Udon aux légumes et gingembre
+in_between_title: Entremet
+in_between:
+  - Petite fantaisie au parmesan, vinaigrette tangerine
+dessert_title: Dessert
+dessert:
+  - Languette croustillante au chocolat
