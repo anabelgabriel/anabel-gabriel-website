@@ -37,14 +37,25 @@ class Menu<P extends Props> extends React.Component<P, State> {
   };
 
   public handleSubmit = () => {
-    if (this.props.guest.menu.bites && this.props.guest.menu.dinner && this.props.guest.menu.wine) {
+    if (this.isValid()) {
       this.props.onSubmit();
     }
   };
 
+  public isValid = (): boolean => {
+    const { guest } = this.props;
+    let valid: boolean = false;
+    if (guest.isChildren) {
+      valid = guest.menu.dinner ? true : false;
+    } else {
+      valid = (guest.menu.bites && guest.menu.dinner && guest.menu.wine) ? true : false;
+    }
+    return valid;
+  };
+
   public render() {
     const { lang } = this.props;
-    const valid = this.props.guest.menu.bites && this.props.guest.menu.dinner && this.props.guest.menu.wine;
+    let valid: boolean = this.isValid();
     return (
       <Form onSubmit={this.handleSubmit}>
         <Paragraph font="edwardian" size={30}>
@@ -71,37 +82,41 @@ class Menu<P extends Props> extends React.Component<P, State> {
     return (
       <View>
         <Title>{guest.firstName}</Title>
-        <Row marginBottom={16}>
-          <Column span={4}>
-            <Label>{lang.bites_title}</Label>
-          </Column>
-          <Column span={8}>
-            <RadioGroup
-              value={guest.menu.bites}
-              onChange={(value: any) => guest.menu.bites = value}
-            >
-              <Radio
-                marginTop={0}
-                label={lang.bites[0]}
-                value={'salmon'}
-              />
-              <Radio
-                label={lang.bites[1]}
-                value={'cheese'}
-              />
-            </RadioGroup>
-          </Column>
-        </Row>
-        <Row marginBottom={16}>
-          <Column span={4}>
-            <Label>{lang.starter_title}</Label>
-          </Column>
-          <Column span={8}>
-            <Paragraph font="cormorant" size={17}>
-              {lang.starter[0]}
-            </Paragraph>
-          </Column>
-        </Row>
+        {!guest.isChildren ? (
+          <Row marginBottom={16}>
+            <Column span={4}>
+              <Label>{lang.bites_title}</Label>
+            </Column>
+            <Column span={8}>
+              <RadioGroup
+                value={guest.menu.bites}
+                onChange={(value: any) => guest.menu.bites = value}
+              >
+                <Radio
+                  marginTop={0}
+                  label={lang.bites[0]}
+                  value={'salmon'}
+                />
+                <Radio
+                  label={lang.bites[1]}
+                  value={'cheese'}
+                />
+              </RadioGroup>
+            </Column>
+          </Row>
+        ) : null}
+        {!guest.isChildren ? (
+          <Row marginBottom={16}>
+            <Column span={4}>
+              <Label>{lang.starter_title}</Label>
+            </Column>
+            <Column span={8}>
+              <Paragraph font="cormorant" size={17}>
+                {lang.starter[0]}
+              </Paragraph>
+            </Column>
+          </Row>
+        ) : null}
         <Row marginBottom={16}>
           <Column span={4}>
             <Label>{lang.dinner_title}</Label>
@@ -127,16 +142,18 @@ class Menu<P extends Props> extends React.Component<P, State> {
             </RadioGroup>
           </Column>
         </Row>
-        <Row marginBottom={16}>
-          <Column span={4}>
-            <Label>{lang.in_between_title}</Label>
-          </Column>
-          <Column span={8}>
-            <Paragraph font="cormorant" size={17}>
-              {lang.in_between[0]}
-            </Paragraph>
-          </Column>
-        </Row>
+        {!guest.isChildren ? (
+          <Row marginBottom={16}>
+            <Column span={4}>
+              <Label>{lang.in_between_title}</Label>
+            </Column>
+            <Column span={8}>
+              <Paragraph font="cormorant" size={17}>
+                {lang.in_between[0]}
+              </Paragraph>
+            </Column>
+          </Row>
+        ) : null}
         <Row marginBottom={16}>
           <Column span={4}>
             <Label>{lang.dessert_title}</Label>
@@ -148,27 +165,29 @@ class Menu<P extends Props> extends React.Component<P, State> {
           </Column>
         </Row>
 
-        <Row marginBottom={16}>
-          <Column span={4}>
-            <Label>{lang.wine_title}</Label>
-          </Column>
-          <Column span={8}>
-            <RadioGroup
-              value={guest.menu.wine}
-              onChange={(value: any) => guest.menu.wine = value }
-            >
-              <Radio
-                marginTop={0}
-                label={lang.wine[0]}
-                value={'white'}
-              />
-              <Radio
-                label={lang.wine[1]}
-                value={'red'}
-              />
-            </RadioGroup>
-          </Column>
-        </Row>
+        {!guest.isChildren ? (
+          <Row marginBottom={16}>
+            <Column span={4}>
+              <Label>{lang.wine_title}</Label>
+            </Column>
+            <Column span={8}>
+              <RadioGroup
+                value={guest.menu.wine}
+                onChange={(value: any) => guest.menu.wine = value }
+              >
+                <Radio
+                  marginTop={0}
+                  label={lang.wine[0]}
+                  value={'white'}
+                />
+                <Radio
+                  label={lang.wine[1]}
+                  value={'red'}
+                />
+              </RadioGroup>
+            </Column>
+          </Row>
+        ) : null}
         <Row marginBottom={16} layout="vertical">
           <CheckBox
             label={lang.allergies_title}

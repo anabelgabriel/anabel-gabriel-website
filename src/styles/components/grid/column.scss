@@ -18,8 +18,10 @@ $grid-columns: 12;
 }
 
 .#{$class} {
+  display: flex;
+
   @for $i from 1 through 12 {
-    &--span-#{$i} {
+    &.span-#{$i} {
       width: column-width($i);
       margin-right: gutter-width();
       flex: 0 1 column-width($i);
@@ -33,7 +35,7 @@ $grid-columns: 12;
       }
     }
 
-    &--mobile-span-#{$i} {
+    &.mobile-span-#{$i} {
       @include mobile {
         width: column-width($i);
         margin-right: gutter-width();
@@ -47,6 +49,24 @@ $grid-columns: 12;
           margin-right: 0;
         }
       }
+    }
+  }
+
+  &.vertical-align-center {
+    align-items: center;
+  }
+
+  &.horizontal-align-right {
+    justify-content: flex-end;
+  }
+
+  &.layout-vertical {
+    &.vertical-align-center {
+      justify-content: center;
+    }
+
+    &.horizontal-align-right {
+      align-items: flex-end;
     }
   }
 }

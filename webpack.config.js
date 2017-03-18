@@ -7,14 +7,14 @@ var PROD = !(process.env.NODE_ENV === 'development');
 module.exports = {
   entry: PROD ? './index.tsx' : [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://192.168.1.158',
+    'webpack-dev-server/client?http://localhost:3000',
     './index.tsx'
   ],
 
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
-    publicPath: PROD ? '/' : 'http://192.168.1.158/'
+    publicPath: PROD ? '/' : 'http://localhost:3000/'
   },
 
   context: path.resolve(__dirname, 'src'),

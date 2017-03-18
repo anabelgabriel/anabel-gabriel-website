@@ -4,6 +4,7 @@ import Menu from './Menu';
 class Guest {
   @observable public firstName: string = null;
   @observable public lastName: string = null;
+  @observable public isChildren: boolean = false;
   @observable public menu: Menu = new Menu();
 
   constructor(props = {}) {

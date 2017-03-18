@@ -7,6 +7,7 @@ import firebase from 'firebase';
 class Attendee {
   @observable public firstName: string = null;
   @observable public lastName: string = null;
+  @observable public isChildren: boolean = false;
   @observable public email: string = null;
   @observable public isAttending: boolean = null;
   @observable public specialRequests: string = null;

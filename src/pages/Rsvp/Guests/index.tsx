@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   Form, FormActions, FormProgress, FormProgressStep, Row, RadioGroup, Radio, View, Separator, NumberField, Column,
-  TextField, Paragraph
+  TextField, Paragraph, CheckBox
 } from '../../../components';
 import Attendee from "../../../stores/Attendee/index";
 import { inject, observer } from 'mobx-react';
@@ -45,6 +45,7 @@ class Guests<P extends Props & { invitations?: Invitations }> extends React.Comp
           this.props.attendee.guests.push({
             firstName: '',
             lastName: '',
+            isChildren: false,
             menu: {
               bites: null,
               dinner: null,
@@ -124,10 +125,12 @@ class Guests<P extends Props & { invitations?: Invitations }> extends React.Comp
 
   private renderGuests() {
     const { lang } = this.props;
+    const { invitation } = this.state;
+    const hasChildren = invitation && invitation.hasChildren ? true : false;
     return this.props.attendee.guests.map((guest, index) => {
       return (
         <Row key={index}>
-          <Column span={6} mobileSpan={12}>
+          <Column span={hasChildren ? 4 : 6} mobileSpan={12}>
             <TextField
               type="name"
               label={lang.first_name}
@@ -137,7 +140,7 @@ class Guests<P extends Props & { invitations?: Invitations }> extends React.Comp
               valid={guest.firstName ? true : false}
             />
           </Column>
-          <Column span={6} mobileSpan={12}>
+          <Column span={hasChildren ? 4 : 6} mobileSpan={12}>
             <TextField
               type="name"
               label={lang.last_name}
@@ -147,6 +150,11 @@ class Guests<P extends Props & { invitations?: Invitations }> extends React.Comp
               valid={guest.lastName ? true : false}
             />
           </Column>
+          {hasChildren ? (
+            <Column span={4} mobileSpan={12} verticalAlign="center" horizontalAlign="right">
+              <CheckBox selected={guest.isChildren} onChange={(value) => guest.isChildren = value} label="Enfant"/>
+            </Column>
+          ) : null}
         </Row>
       );
     });

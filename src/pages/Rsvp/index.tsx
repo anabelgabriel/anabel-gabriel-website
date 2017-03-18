@@ -57,10 +57,10 @@ class Rsvp<P extends void> extends React.Component<Props, State> {
       case 'menu':
         const guestAmount = this.attendee.guests.length;
         window.scrollTo(0, 0);
-        if (!guestAmount || this.state.guest !== null && this.state.guest + 1 === guestAmount) {
+        if (!guestAmount || (this.state.guest !== null && this.state.guest + 1 === guestAmount)) {
           this.setState({ step: 'requests' });
         } else {
-          if (!this.state.guest) {
+          if (this.state.guest === null) {
             this.setState({ step: 'menu', guest: 0 });
           } else {
             this.setState({ step: 'menu', guest: this.state.guest + 1 });
@@ -79,7 +79,6 @@ class Rsvp<P extends void> extends React.Component<Props, State> {
       case 'menu':
         guestAmount = this.attendee.guests.length;
         window.scrollTo(0, 0);
-        console.log(guestAmount, this.state.guest);
         if (!guestAmount || this.state.guest === null) {
           this.setState({ step: 'guests' });
         } else {
