@@ -18,6 +18,7 @@ dessert_title: Dessert
 dessert:
   - Crusty chocolate languette
 wine_title: Wine
+wine_info: "I will mainly drink:"
 wine:
   - White
   - Red

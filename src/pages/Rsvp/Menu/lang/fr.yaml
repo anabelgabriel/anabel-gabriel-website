@@ -18,6 +18,7 @@ dessert_title: Dessert
 dessert:
   - Languette croustillante au chocolat
 wine_title: Vin
+wine_info: "Je boirai principalement du vin:"
 wine:
   - Blanc
   - Rouge

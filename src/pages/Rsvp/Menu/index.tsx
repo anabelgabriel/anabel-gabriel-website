@@ -166,27 +166,32 @@ class Menu<P extends Props> extends React.Component<P, State> {
         </Row>
 
         {!guest.isChildren ? (
-          <Row marginBottom={16}>
-            <Column span={4}>
-              <Label>{lang.wine_title}</Label>
-            </Column>
-            <Column span={8}>
-              <RadioGroup
-                value={guest.menu.wine}
-                onChange={(value: any) => guest.menu.wine = value }
-              >
-                <Radio
-                  marginTop={0}
-                  label={lang.wine[0]}
-                  value={'white'}
-                />
-                <Radio
-                  label={lang.wine[1]}
-                  value={'red'}
-                />
-              </RadioGroup>
-            </Column>
-          </Row>
+          <View>
+            <Row marginBottom={16}>
+              <Label>{lang.wine_info}</Label>
+            </Row>
+            <Row marginBottom={16}>
+              <Column span={4}>
+                <Label>{lang.wine_title}</Label>
+              </Column>
+              <Column span={8}>
+                <RadioGroup
+                  value={guest.menu.wine}
+                  onChange={(value: any) => guest.menu.wine = value }
+                >
+                  <Radio
+                    marginTop={0}
+                    label={lang.wine[0]}
+                    value={'white'}
+                  />
+                  <Radio
+                    label={lang.wine[1]}
+                    value={'red'}
+                  />
+                </RadioGroup>
+              </Column>
+            </Row>
+          </View>
         ) : null}
         <Row marginBottom={16} layout="vertical">
           <CheckBox
