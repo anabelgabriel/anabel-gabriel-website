@@ -1,66 +1,48 @@
 import * as React from 'react';
-import { Paragraph, Layout, LayoutContent, Column, Row, Label, Image, Title, Button } from '../../components';
+import { Paragraph, Layout, LayoutContent, Column, Row, Label, Title, View } from '../../components';
+import { i18n } from '../../utils';
 
-interface Props {
+@i18n({
+  en: require( './lang/en.yaml'),
+  fr: require( './lang/fr.yaml'),
+})
+class Unfolding extends React.Component<{lang: any}, void> {
+  public render() {
+    const { lang } = this.props;
+    return (
+      <Layout>
+        <LayoutContent>
+          <Title align="center">{lang.title}</Title>
+          <Paragraph>
+            {lang.p1}
+          </Paragraph>
+          <Paragraph>
+            {lang.p2}
+          </Paragraph>
+          <Paragraph>
+            {lang.p3}
+          </Paragraph>
+          {this.renderUnfolding(lang.unfolding)}
+        </LayoutContent>
+      </Layout>
+    );
+  }
+
+  public renderUnfolding(items) {
+    let children = [];
+    for(let key in items) {
+      if (items.hasOwnProperty(key)) {
+        console.log(key, items[key]);
+        children.push(<View key={key}>{items[key].map((item, index) => (
+          <Row key={index}>
+            <Column span={3}><Label lineHeight={1.5}>{index === 0 ? key : null}</Label></Column>
+            <Column span={9}><Paragraph font="cormorant" size={17}>{item}</Paragraph></Column>
+          </Row>
+        ))}</View>);
+      }
+    }
+    return children;
+  }
 }
-
-const Unfolding: React.SFC<Props> = (props: Props): React.ReactElement<Props> => (
-  <Layout>
-    <LayoutContent>
-      <Title align="center">Déroulement</Title>
-      <Paragraph>
-        Vous êtes invités à arriver au stationnement (payant) à partir de 15h30. La navette fluviale commencera à
-        faire la traversée dès 16h00 afin que tous soient sur l’île à temps.
-      </Paragraph>
-      <Paragraph>
-        À noter que la navette fluviale est accessible tout au long de la soirée.
-      </Paragraph>
-      <Row>
-        <Column span={3}><Label lineHeight={1.5}>15h30</Label></Column>
-        <Column span={9}><Paragraph font="cormorant" size={17}>Arrivée au stationnement</Paragraph></Column>
-      </Row>
-      <Row>
-        <Column span={3}><Label lineHeight={1.5}>16h00</Label></Column>
-        <Column span={9}><Paragraph font="cormorant" size={17}>Traverse fluviale</Paragraph></Column>
-      </Row>
-      <Row>
-        <Column span={3}><Label lineHeight={1.5}>16h25</Label></Column>
-        <Column span={9}><Paragraph font="cormorant" size={17}>Arrivée du cortège et des mariés</Paragraph></Column>
-      </Row>
-      <Row>
-        <Column span={3}><Label lineHeight={1.5}>16h30</Label></Column>
-        <Column span={9}><Paragraph font="cormorant" size={17}>Cérémonie</Paragraph></Column>
-      </Row>
-      <Row>
-        <Column span={3}><Label lineHeight={1.5}></Label></Column>
-        <Column span={9}><Paragraph font="cormorant" size={17}>Cocktail</Paragraph></Column>
-      </Row>
-      <Row>
-        <Column span={3}><Label lineHeight={1.5}></Label></Column>
-        <Column span={9}><Paragraph font="cormorant" size={17}>Repas</Paragraph></Column>
-      </Row>
-      <Row>
-        <Column span={3}><Label lineHeight={1.5}></Label></Column>
-        <Column span={9}><Paragraph font="cormorant" size={17}>Danse</Paragraph></Column>
-      </Row>
-      <Row>
-        <Column span={3}><Label lineHeight={1.5}>22h00</Label></Column>
-        <Column span={9}><Paragraph font="cormorant" size={17}>Feux d’artifices de la Ronde</Paragraph></Column>
-      </Row>
-      <Row>
-        <Column span={3}><Label lineHeight={1.5}></Label></Column>
-        <Column span={9}><Paragraph font="cormorant" size={17}>Danse</Paragraph></Column>
-      </Row>
-      <Row>
-        <Column span={3}><Label lineHeight={1.5}>Minuit</Label></Column>
-        <Column span={9}><Paragraph font="cormorant" size={17}>Buffet de fin de soirée</Paragraph></Column>
-      </Row>
-      <Row>
-        <Column span={3}><Label lineHeight={1.5}>2h00</Label></Column>
-        <Column span={9}><Paragraph font="cormorant" size={17}>Dernière navette fluviale</Paragraph></Column>
-      </Row>
-    </LayoutContent>
-  </Layout>
-);
 
 export default Unfolding;

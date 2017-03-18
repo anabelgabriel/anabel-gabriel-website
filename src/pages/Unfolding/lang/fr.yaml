@@ -1,0 +1,28 @@
+title: Déroulement
+p1: |
+  Vous êtes invités à arriver au stationnement (payant) à partir de 15h30. La navette 
+  fluviale commencera à faire la traversée dès 16h00 afin que tous soient sur l'île à temps.
+p2: |
+  À noter que la navette fluviale est accessible tout au long de la soirée.
+p3: |
+  Pour le bar, vous pourrez payer par carte de crédit ou en argent comptant.
+unfolding:
+  15h30:
+    - Arrivée au stationnement
+  16h00:
+    - Traverse fluviale
+  16h25:
+    - Arrivée du cortège et des mariés
+  16h30:
+    - Cérémonie
+    - Cocktail
+    - Repas
+    - Danse
+  22h00:
+    - Feux d'artifices de la Ronde
+    - Danse
+  Minuit:
+    - Buffet de fin de soirée
+  2h00:
+    - Dernière navette fluviale
+   

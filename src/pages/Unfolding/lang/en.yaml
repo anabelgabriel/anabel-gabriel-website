@@ -1,0 +1,28 @@
+title: Unfolding
+p1: |
+  You are invited to arrive at the parking lot at 15:30. The river shuttle will start
+  the crossing at 16:00 so that everyone is on the island on time.
+p2: |
+  Please note that the river shuttle is available throughout the evening.
+p3: |
+  For the bar, you can pay by credit card or cash.
+
+unfolding:
+  "15:30":
+    - Arrival at the parking
+  "16:00":
+    - River shuttle
+  "16:25":
+    - Arrival of the bride and groom
+  "16:30":
+    - Ceremony
+    - Cocktail
+    - Dinner
+    - Dance
+  "22:00":
+    - Fireworks
+    - Dance
+  "Midnight":
+    - Late evening buffets
+  "2:00":
+    - Last river shuttle
