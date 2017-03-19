@@ -1,0 +1,26 @@
+intro: Bitte wählt euer Menü
+bites_title: Cocktailbissen
+bites:
+  - Lachstartar mit Limette auf schwarzem Sesamkegel
+  - Drei-Käse Fiochettis aud provenzalische Art
+starter_title: Vorspeiße
+starter:
+  - Gemüseflammkuchen mit Ziegenkäse, zarte Spinatsprossen
+dinner_title: Hauptgang
+dinner:
+  - Hähnchenbrust mit karamellisierten Äpfeln und Calvados
+  - Medaillons vom Rinderfilet auf Madeiraweinsauce
+  - Pfannengemüse mit Ingwer auf Udonnudeln
+in_between_title: Zwischengang
+in_between:
+  - Kleine Fantasie mit Parmesan und Mandarine-Vinaigrette
+dessert_title: Nachspeiße
+dessert:
+  - Knusprige Schokoladenzunge
+wine_title: Wein
+wine_info: "Ich trinke vor allem:"
+wine:
+  - Weißwein
+  - Rotwein
+allergies_title: Ich bin allergisch.
+allergies_details: "Meine Allergien:"

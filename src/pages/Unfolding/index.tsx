@@ -5,6 +5,7 @@ import { i18n } from '../../utils';
 @i18n({
   en: require( './lang/en.yaml'),
   fr: require( './lang/fr.yaml'),
+  de: require( './lang/de.yaml'),
 })
 class Unfolding extends React.Component<{lang: any}, void> {
   public render() {
@@ -32,7 +33,6 @@ class Unfolding extends React.Component<{lang: any}, void> {
     let children = [];
     for(let key in items) {
       if (items.hasOwnProperty(key)) {
-        console.log(key, items[key]);
         children.push(<View key={key}>{items[key].map((item, index) => (
           <Row key={index}>
             <Column span={3}><Label lineHeight={1.5}>{index === 0 ? key : null}</Label></Column>

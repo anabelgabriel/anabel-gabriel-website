@@ -1,0 +1,28 @@
+title: Verlauf
+p1: |
+  Ihr seid ab 15 Uhr 30 auf den Parkplatz (gegen Gebühr) eingeladen. Die Überfahrt zur Navarkinsel beginnt um 16 Uhr damit alle
+  zur selben Zeit auf der Insel ankommen.
+p2: |
+  Die Fähre sthet den ganzen Abend zur Verfügung.
+p3: |
+  Die Bar kann per Kreditkarte oder bar bezahlt werden.
+unfolding:
+  "15:30":
+    - Ankunft auf dem Parkplatz Insel Charron.
+  "16:00":
+    - Überfahrt
+  "16:25":
+    - Ankunft der Prozession und des Brautpaars.
+  "16:30":
+    - Zeremonie
+    - Cocktail
+    - Mahlzeit
+    - Tanz
+  "22:00":
+    - Feuerwerk auf der Ronde
+    - Tanz
+  "Mitternacht":
+    - Late-night Buffet
+  "2:00":
+    - Letzte Überfahrt
+

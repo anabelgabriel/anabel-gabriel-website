@@ -4,3 +4,4 @@ yarn-error.log
 .awcache
 /build
 .idea
+.DS_Store

@@ -38,4 +38,5 @@ const Nav: React.SFC<NavProps> = ({ lang }: NavProps): React.ReactElement<NavPro
 export default i18n({
   en: require( './lang/en/nav.yaml'),
   fr: require( './lang/fr/nav.yaml'),
+  de: require( './lang/de/nav.yaml'),
 })(Nav);

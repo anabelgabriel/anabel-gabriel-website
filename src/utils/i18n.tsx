@@ -16,6 +16,9 @@ export default function <P>(langs: {[key: string]: any}): (WrappedComponent: Rea
         }
       }
     }
+    if (!lang) {
+      lang = langs[defaultLanguage];
+    }
     return <WrappedComponent {...props} lang={lang}/>
   };
 };

@@ -1,0 +1,7 @@
+intro: Hallo %s, bitte lasst uns wissen, mit wem ihr kommt.
+has_guests: Ich komme in Begleitung
+no_guests: Ich komme ohne Begleitung
+num: Wir sind
+first_name: Vorname
+last_name: Nachname
+kid: Kind

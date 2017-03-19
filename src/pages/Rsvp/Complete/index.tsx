@@ -42,4 +42,5 @@ class Complete extends React.Component<Props, void> {
 export default i18n({
   en: require( './lang/en.yaml'),
   fr: require( './lang/fr.yaml'),
+  de: require( './lang/de.yaml'),
 })(Complete);

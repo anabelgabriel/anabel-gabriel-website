@@ -215,4 +215,5 @@ class Menu<P extends Props> extends React.Component<P, State> {
 export default i18n({
   en: require( './lang/en.yaml'),
   fr: require( './lang/fr.yaml'),
+  de: require( './lang/de.yaml'),
 })(Menu);

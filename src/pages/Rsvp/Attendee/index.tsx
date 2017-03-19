@@ -81,4 +81,5 @@ class AttendeeComponent<P extends AttendeeProps> extends React.Component<Attende
 export default i18n({
   en: require( './lang/en.yaml'),
   fr: require( './lang/fr.yaml'),
+  de: require( './lang/de.yaml'),
 })(AttendeeComponent);

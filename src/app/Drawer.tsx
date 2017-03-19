@@ -88,4 +88,5 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
 export default i18n({
   en: require( './lang/en/nav.yaml'),
   fr: require( './lang/fr/nav.yaml'),
+  de: require( './lang/de/nav.yaml'),
 })(Drawer);

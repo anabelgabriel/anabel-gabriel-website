@@ -105,4 +105,5 @@ const Menu: React.SFC<void> = ({ lang }: any): React.ReactElement<void> => (
 export default i18n({
   en: require( './lang/en.yaml'),
   fr: require( './lang/fr.yaml'),
+  de: require( './lang/de.yaml'),
 })(Menu);

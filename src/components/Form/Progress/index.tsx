@@ -52,5 +52,6 @@ const Progress: React.SFC<ProgressProps> = ({ children, disableNext, onBack, lan
 export default i18n({
   en: require( './lang/en.yaml'),
   fr: require( './lang/fr.yaml'),
+  de: require( './lang/de.yaml'),
 })(Progress);
 export { default as ProgressStep } from './Step';

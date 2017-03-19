@@ -55,4 +55,5 @@ class Requests<P extends Props> extends React.Component<Props, void> {
 export default i18n({
   en: require( './lang/en.yaml'),
   fr: require( './lang/fr.yaml'),
+  de: require( './lang/de.yaml'),
 })(Requests);

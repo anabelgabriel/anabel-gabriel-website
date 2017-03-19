@@ -152,7 +152,7 @@ class Guests<P extends Props & { invitations?: Invitations }> extends React.Comp
           </Column>
           {hasChildren ? (
             <Column span={4} mobileSpan={12} verticalAlign="center" horizontalAlign="right">
-              <CheckBox selected={guest.isChildren} onChange={(value) => guest.isChildren = value} label="Enfant"/>
+              <CheckBox selected={guest.isChildren} onChange={(value) => guest.isChildren = value} label={lang.kid}/>
             </Column>
           ) : null}
         </Row>
@@ -164,4 +164,5 @@ class Guests<P extends Props & { invitations?: Invitations }> extends React.Comp
 export default i18n({
   en: require( './lang/en.yaml'),
   fr: require( './lang/fr.yaml'),
+  de: require( './lang/de.yaml'),
 })(Guests);
