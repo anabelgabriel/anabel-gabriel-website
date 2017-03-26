@@ -9,10 +9,11 @@ export interface TitleProps {
   align?: 'center';
   font?: 'cormorant' | 'edwardian';
   size?: number;
+  marginBottom?: number;
 }
 
 const Title: React.SFC<TitleProps> = (
-  { children, align, font, size, className: inheritedClassName }: TitleProps
+  { children, align, font, size, className: inheritedClassName, marginBottom }: TitleProps
 ): React.ReactElement<TitleProps> => {
   let className = namespace();
   if (inheritedClassName) className += ` ${inheritedClassName}`;
@@ -21,6 +22,7 @@ const Title: React.SFC<TitleProps> = (
 
   const style: React.CSSProperties = {};
   if (size || size === 0) style.fontSize = `${size}px`;
+  if (marginBottom || marginBottom === 0) style.marginBottom = `${marginBottom}px`;
   return (
     <h1 className={className} style={style}>
       {children}
