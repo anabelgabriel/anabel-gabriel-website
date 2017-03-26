@@ -42,7 +42,9 @@ const Progress: React.SFC<ProgressProps> = ({ children, disableNext, onBack, lan
         {finalChildren}
       </ul>
       <div className={`${namespace()}--placeholder`}>
-        <Button flat icon="next" iconAfter submit disabled={disableNext} tooltip={<Tooltip>{lang.complete}</Tooltip>}>{lang.next}</Button>
+        <Button flat icon="next" iconAfter submit disabled={disableNext} tooltip={<Tooltip>{lang.complete}</Tooltip>}>
+          {steps === currentStep ? lang.finish : lang.next}
+        </Button>
       </div>
     </div>
   );
