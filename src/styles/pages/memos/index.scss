@@ -3,41 +3,46 @@
 $class: "memos--photos";
 
 .#{$class} {
-  height: 140px;
-  margin-bottom: 10px;
-  @include mobile {
-    height: 100px;
-  }
-  width: 100%;
-  box-shadow: 0 2px 4px rgba(black, .5);
-  display: flex;
-
-  &--image {
-    height: 140px;
-    @include mobile {
-      height: 100px;
-    }
-    background-size: cover;
-    background-position: center center;
-    &.hero-full {
+  &--button {
+    cursor: pointer;
+    &--image {
+      height: 140px;
+      margin-bottom: 10px;
+      @include mobile {
+        height: 100px;
+      }
       width: 100%;
-    }
+      box-shadow: 0 2px 4px rgba(black, .5);
+      display: flex;
 
-    &.hero {
-      width: 70%;
-    }
-    &.sidekick {
-      width: 30%;
-    }
+      &--item {
+        height: 140px;
+        @include mobile {
+          height: 100px;
+        }
+        background-size: cover;
+        background-position: center center;
+        &.hero-full {
+          width: 100%;
+        }
 
-    &.hero-1 {
-      width: 50%;
-    }
-    &.sidekick-1 {
-      width: 25%;
-    }
-    &.sidekick-2 {
-      width: 25%;
+        &.hero {
+          width: 70%;
+        }
+        &.sidekick {
+          width: 30%;
+        }
+
+        &.hero-1 {
+          width: 50%;
+        }
+        &.sidekick-1 {
+          width: 25%;
+        }
+        &.sidekick-2 {
+          width: 25%;
+        }
+      }
     }
   }
 }

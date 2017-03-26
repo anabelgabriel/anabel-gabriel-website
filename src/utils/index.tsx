@@ -3,3 +3,4 @@ export { default as isSafari } from './isSafari';
 export { default as firebase } from './firebase';
 export { default as findName } from './findName';
 export { default as removeAccents } from './removeAccents';
+export { default as whichAnimationEvent } from './whichAnimationEvent';

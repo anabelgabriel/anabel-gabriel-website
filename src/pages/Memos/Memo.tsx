@@ -8,7 +8,6 @@ interface Props {
 }
 
 const Memo: React.SFC<Props> = ({ entry }: Props): React.ReactElement<Props> => {
-  console.log(entry);
   return (
     <View>
       <Title marginBottom={10} align="center">{entry.title}</Title>

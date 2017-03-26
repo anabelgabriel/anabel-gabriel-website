@@ -1,0 +1,115 @@
+@import "../../media";
+@import "../../colors";
+@import "settings";
+
+.#{$slide-show-namespace} {
+  &--backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba($navy-blue, .8);
+
+    &.open {
+      display: block;
+    }
+
+    &.closed {
+      display: none;
+    }
+
+    &.enter {
+      &.closed {
+        display: block;
+      }
+      animation: elements--slide-show-modal--backdrop .3s cubic-bezier(.4,0,.2,1) forwards normal;
+    }
+
+    &.leave {
+      &.closed {
+        display: block;
+      }
+      animation: elements--slide-show-modal--backdrop .3s cubic-bezier(.4,0,.2,1) forwards reverse;
+    }
+
+    @keyframes elements--slide-show-modal--backdrop {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--close {
+    position: fixed;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 30px;
+    left: 30px;
+    cursor: pointer;
+    opacity: .5;
+    &:hover {
+      opacity: 1;
+      transition: opacity .2s;
+    }
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &--window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+
+    &.open {
+      display: flex;
+    }
+
+    &.closed {
+      display: none;
+    }
+
+    &.enter {
+      &.closed {
+        display: flex;
+      }
+      animation: elements--slide-show-modal--window .3s cubic-bezier(.4,0,.2,1) forwards normal;
+    }
+
+    &.leave {
+      &.closed {
+        display: flex;
+      }
+      animation: elements--slide-show-modal--window .3s cubic-bezier(.4,0,.2,1) forwards reverse;
+    }
+
+    @keyframes elements--slide-show-modal--window {
+      from {
+        transform: scale(.8) translateX(0);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1) translateX(0);
+        opacity: 1;
+      }
+    }
+  }
+}

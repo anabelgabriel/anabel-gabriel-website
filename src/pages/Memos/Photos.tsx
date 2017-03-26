@@ -1,6 +1,7 @@
 import * as React from 'react';
 import '../../styles/pages/memos/index.scss';
 import firebase from 'firebase';
+import { SlideShow, Slide } from '../../components';
 
 const namespace = (): string => 'memos--photos';
 
@@ -10,12 +11,18 @@ interface Props {
 
 interface State {
   photos: Array<string>;
+  slideShowOpen: boolean;
 }
 
 class Photos extends React.Component<Props, State> {
   public state: State = {
-    photos: null
+    photos: null,
+    slideShowOpen: false
   }
+
+  public handleClick = () => {
+    this.setState({ slideShowOpen: !this.state.slideShowOpen });
+  };
 
   public componentWillMount() {
     const ref = firebase.storage().ref('blog');
@@ -26,13 +33,24 @@ class Photos extends React.Component<Props, State> {
   public render() {
     const { photos } = this.state;
     if (!photos) return null;
+    let children;
     if (photos.length === 1) {
-      return this.renderHero();
+      children = this.renderHero();
     } else if (photos.length === 2) {
-      return this.renderSidekick();
+      children = this.renderSidekick();
     } else {
-      return this.renderSidekicks();
+      children = this.renderSidekicks();
     }
+    return (
+      <div className={namespace()}>
+        <a className={`${namespace()}--button`} onClick={this.handleClick}>
+          {children}
+        </a>
+        <SlideShow open={this.state.slideShowOpen} onClose={() => this.setState({ slideShowOpen: false })}>
+          {photos.map(photo => <Slide key={photo} image={photo}/>)}
+        </SlideShow>
+      </div>
+    );
   }
 
   private renderHero() {
@@ -40,8 +58,8 @@ class Photos extends React.Component<Props, State> {
     const heroFullStyle: React.CSSProperties = {};
     heroFullStyle.backgroundImage = `url(${photos[0]})`;
     return (
-      <div className={namespace()}>
-        <div className={`${namespace()}--image hero-full`} style={heroFullStyle}/>
+      <div className={`${namespace()}--button--image`}>
+        <div className={`${namespace()}--button--image--item hero-full`} style={heroFullStyle}/>
       </div>
     );
   }
@@ -53,9 +71,9 @@ class Photos extends React.Component<Props, State> {
     const sidekickStyle: React.CSSProperties = {};
     sidekickStyle.backgroundImage = `url(${photos[1]})`;
     return (
-      <div className={namespace()}>
-        <div className={`${namespace()}--image hero`} style={heroStyle}/>
-        <div className={`${namespace()}--image sidekick`} style={sidekickStyle}/>
+      <div className={`${namespace()}--button--image`}>
+        <div className={`${namespace()}--button--image--item hero`} style={heroStyle}/>
+        <div className={`${namespace()}--button--image--item sidekick`} style={sidekickStyle}/>
       </div>
     );
   }
@@ -69,10 +87,10 @@ class Photos extends React.Component<Props, State> {
     const sidekick2Style: React.CSSProperties = {};
     sidekick2Style.backgroundImage = `url(${photos[2]})`;
     return (
-      <div className={namespace()}>
-        <div className={`${namespace()}--image sidekick-1`} style={sidekick1Style}/>
-        <div className={`${namespace()}--image hero-1`} style={heroStyle}/>
-        <div className={`${namespace()}--image sidekick-2`} style={sidekick2Style}/>
+      <div className={`${namespace()}--button--image`}>
+        <div className={`${namespace()}--button--image--item sidekick-1`} style={sidekick1Style}/>
+        <div className={`${namespace()}--button--image--item hero-1`} style={heroStyle}/>
+        <div className={`${namespace()}--button--image--item sidekick-2`} style={sidekick2Style}/>
       </div>
     );
   }

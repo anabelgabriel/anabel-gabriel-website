@@ -6,22 +6,51 @@ import { findDOMNode } from 'react-dom';
 import Hammer from 'hammerjs';
 import { Stores } from '../stores';
 import { Paragraph } from '../components';
+import { autorun } from 'mobx';
 
-interface AppProps extends RouteComponentProps<any, any> {
+interface Props extends RouteComponentProps<any, any> {
   body?: React.ReactNode;
   header?: React.ReactNode;
 };
-const App = (stores: Stores): React.ComponentClass<AppProps> => {
-  return class extends React.PureComponent<AppProps, void> {
+
+interface State {
+  modalOpen: boolean;
+}
+
+const App = (stores: Stores): React.ComponentClass<Props> => {
+  return class extends React.PureComponent<Props, State> {
+    public state: State = {
+      modalOpen: false,
+    };
+
     private hammerTime: HammerManager;
 
-    componentDidMount() {
-      this.hammerTime = new Hammer(findDOMNode(this) as any, {});
+    public componentWillMount() {
+      autorun(() => {
+        if (stores.app.modalOpen) this.setState({ modalOpen: true });
+        else this.setState({ modalOpen: false });
+      });
+    }
+
+    public componentDidMount() {
+      this.hammerTime = new Hammer(findDOMNode(this) as any, {
+        cssProps: {
+          userSelect: 'auto'
+        }
+      } as any);
       this.hammerTime.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
       this.hammerTime.on('swipe', (event) => {
         if (event.direction === Hammer.DIRECTION_LEFT) this.handleSwipeLeft();
         else if (event.direction === Hammer.DIRECTION_RIGHT) this.handleSwipeRight();
       });
+    }
+
+    public componentDidUpdate() {
+      if (this.state.modalOpen) {
+        this.hammerTime.get('swipe').set({ enable: false });
+      } else {
+        this.hammerTime.get('swipe').set({ enable: true });
+      }
     }
 
     public handleSwipeLeft = () => {

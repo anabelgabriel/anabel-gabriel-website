@@ -18,3 +18,4 @@ export { default as Title } from './Title';
 export { default as TextArea } from './TextArea';
 export { default as Media } from './Media';
 export { default as Or } from './Or';
+export { default as SlideShow, Slide } from './SlideShow';
