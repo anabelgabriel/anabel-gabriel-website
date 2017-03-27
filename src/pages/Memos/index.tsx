@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Paragraph, Layout, LayoutContent } from '../../components';
+import { Layout, LayoutContent } from '../../components';
 import { i18n } from '../../utils';
 import { inject, observer } from 'mobx-react';
 import { Blog } from "../../stores";
@@ -12,15 +12,10 @@ interface Props {
 
 class Memos extends React.PureComponent<Props, void> {
   public render() {
-    const { lang, blog } = this.props;
     return (
       <Layout>
         <LayoutContent>
-          {blog.size ? this.renderBlog() : (
-            <Paragraph align="center">
-              {lang.no_posts}
-            </Paragraph>
-          )}
+          {this.renderBlog()}
         </LayoutContent>
       </Layout>
     );
@@ -32,7 +27,7 @@ class Memos extends React.PureComponent<Props, void> {
     blog.forEach((entry, index) => {
       children.push(<Memo key={index} entry={entry}/>);
     })
-    return children;
+    return children.reverse();
   }
 }
 
