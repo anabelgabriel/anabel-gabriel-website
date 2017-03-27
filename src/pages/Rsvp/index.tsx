@@ -108,7 +108,9 @@ class Rsvp<P extends void> extends React.Component<Props, State> {
   };
 
   public render() {
-    if (this.state.complete) {
+    if (localStorage && localStorage['ag__rsvp']) {
+      return <Complete isAttending={localStorage['ag__rsvp'] === 'attending'}/>;
+    } else if (this.state.complete) {
       return <Complete attendee={this.attendee}/>;
     }
 

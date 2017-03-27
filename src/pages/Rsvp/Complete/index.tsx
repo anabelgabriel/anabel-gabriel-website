@@ -5,18 +5,26 @@ import { i18n } from '../../../utils';
 
 interface Props {
   lang?: any;
-  attendee: Attendee;
+  attendee?: Attendee;
+  isAttending?: boolean;
 }
 
 class Complete extends React.Component<Props, void> {
   public props: Props;
 
+  public componentWillMount() {
+    if (localStorage && this.props.attendee) {
+      if (this.props.attendee.isAttending) localStorage['ag__rsvp'] = 'attending';
+      else localStorage['ag__rsvp'] = 'not_attending';
+    }
+  }
+
   public render() {
-    const { attendee, lang } = this.props;
+    const { attendee, isAttending, lang } = this.props;
     return (
       <Layout>
         <LayoutContent>
-          {attendee.isAttending ? (
+          {(attendee && attendee.isAttending || isAttending) ? (
             <View>
               <Paragraph font="edwardian" size={40} align="center">
                 {lang.success}
