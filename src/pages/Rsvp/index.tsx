@@ -4,6 +4,7 @@ import AttendeeComponent from './Attendee';
 import Guests from './Guests';
 import { observer, inject } from 'mobx-react';
 import { Attendees } from "../../stores";
+import { language } from "../../utils";
 import Attendee from "../../stores/Attendee";
 import Menu from "./Menu";
 import Requests from "./Requests";
@@ -35,6 +36,7 @@ class Rsvp<P extends void> extends React.Component<Props, State> {
       this.attendee = attendees.get('new');
     } else {
       this.attendee = new Attendee({});
+      this.attendee.language = language();
       attendees.set('new', this.attendee);
     }
   }

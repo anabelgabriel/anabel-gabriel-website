@@ -9,6 +9,7 @@ class Attendee {
   @observable public lastName: string = null;
   @observable public isChildren: boolean = false;
   @observable public email: string = null;
+  @observable public language: 'fr' | 'en' | 'de' = null;
   @observable public isAttending: boolean = null;
   @observable public specialRequests: string = null;
   @observable public notes: string = null;
